@@ -278,7 +278,12 @@ class SecuRAG:
             if not results['documents'][0] or not results['documents']:
                 context = "没有找到相关背景知识。"
             else:
-                context = "\n\n".join(results['documents'][0])
+                # 每个片段单独用 <document> 包起来，和系统提示里的"资料边界"对应；
+                # 先删掉片段里自带的 document 标签，防止恶意文档伪造边界、把后半段"逃逸"成指令
+                context = "\n".join(
+                    f'<document id="{i}">\n{re.sub(r"</?documents?\b[^>]*>", "", doc, flags=re.I)}\n</document>'
+                    for i, doc in enumerate(results['documents'][0], 1)
+                )
                 print(f"📖 找到背景知识片段数: {len(results['documents'][0])}")
                 
             # --- Step 3: 生成 (Generation) ---
