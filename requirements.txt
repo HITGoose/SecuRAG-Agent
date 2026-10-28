@@ -15,6 +15,10 @@ openai
 chromadb
 pypdf
 
+# --- 检索 (BM25 + 中文分词) ---
+rank_bm25
+jieba
+
 # --- 数据校验 ---
 pydantic
 

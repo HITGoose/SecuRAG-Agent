@@ -12,6 +12,9 @@ from reranker import Reranker
 # 加载环境变量 (API Key)
 load_dotenv(override=True)
 
+class SecurityCheckUnavailable(Exception):
+    """AI 防火墙本身出错 (超时/认证失败/返回异常)，无法判断输入是否安全"""
+
 class SecuRAG:
     def __init__(self):
         """
@@ -35,9 +38,10 @@ class SecuRAG:
             print("☁️ 模式: 云端高智商模式")
             self.client = OpenAI(
                 api_key=os.getenv("DEEPSEEK_API_KEY"),
-                base_url="https://api.deepseek.com"
+                base_url=config.BASE_URL
             )
-        
+            self.model_name = config.MODEL_NAME # deepseek-chat，之前漏设导致云端模式直接报错
+
         # 2. 初始化安全检测器 (Presidio - 智能安检员)
         print("🛡️ 加载安全组件...")
         self.analyzer = AnalyzerEngine()
@@ -115,10 +119,10 @@ class SecuRAG:
             return False #放行
 
         except Exception as e:
-            print(f"[AI防火墙] 检测超时错误: {e}")
-            # 出于可用性考虑，如果安全检测挂了，我们暂时选择"放行"或"降级处理"
-            # 这里选择放行，避免系统不可用，但你可以改为返回 True 进行阻断
-            return False
+            print(f"[AI防火墙] 检测异常: {e}")
+            # Fail-closed：安全检测挂了就不放行。否则攻击者只要构造让防火墙超时/报错的输入就能绕过。
+            # 单独抛异常而不是返回 True，让上层区分"判定为攻击"和"防火墙不可用"，给用户不同的提示
+            raise SecurityCheckUnavailable(str(e)) from e
 
     def add_document(self, doc_text: str):
         """
@@ -214,19 +218,28 @@ class SecuRAG:
         核心流程：提问 -> 清洗 -> 检索 -> 生成
         """
         print(f"🧠 [Engine] 收到请求，创造力 Temperature set to: {temperature}")
-        print(f"\n👤 用户({session_id})提问: {user_query}")
+        # 0. 入口脱敏：之后的安全审查、意图路由、重写、检索、生成、历史都只用 safe_query，
+        #    原始输入 user_query 在这一步之后不再使用 (日志里也不打印原文)
+        safe_query = self.guard._sanitize_input(user_query)
+        self.guard._check_safety(safe_query)
+        print(f"\n👤 用户({session_id})提问: {safe_query}")
+        if safe_query != user_query:
+            print("🛡️ [已脱敏] 输入中的敏感信息已被替换")
         # 1.获取用户的历史记录（如果没有就初始化为空列表）
         if session_id not in self.sessions:
             self.sessions[session_id] = []
         user_history = self.sessions[session_id]
         # 传统正则
-        if self.guard.check_injection(user_query):
+        if self.guard.check_injection(safe_query):
             print("🛡️ 拦截恶意攻击！")
             return "I cannot fulfill this request due to security policies. (Security Alert: Prompt Injection Detected)"
-        if self.analyze_risk(user_query):
-            return "⚠️ Security Alert: Potential adversarial attack detected. Request denied."
+        try:
+            if self.analyze_risk(safe_query):
+                return "⚠️ Security Alert: Potential adversarial attack detected. Request denied."
+        except SecurityCheckUnavailable:
+            return "⚠️ 安全检查服务暂时不可用，为保护系统安全，本次请求未被处理，请稍后重试。"
         #意图路由
-        intent = self._decide_intent(user_query)
+        intent = self._decide_intent(safe_query)
         print(f"决策结果:[{intent}]")
 
         #若为闲聊，启动闲聊模式
@@ -239,7 +252,7 @@ class SecuRAG:
             #加上历史记录，防遗忘
             for msg in user_history[-4:]:
                 messages.append(msg)
-            messages.append({"role": "user", "content": user_query})
+            messages.append({"role": "user", "content": safe_query})
 
             #直接生成
             response = self.client.chat.completions.create(
@@ -251,15 +264,9 @@ class SecuRAG:
         #若为查库，启动查库模式RAG
         else:
             print(" 进入查库模式(RAG)...")
-            #查询重写
-            search_query = self._rewrite_query(user_query, user_history)
-            # --- Step 1: 清洗与安全检查 ---
-            safe_query = self.guard._sanitize_input(user_query)
-            self.guard._check_safety(safe_query)
-            
-            if safe_query != user_query:
-                print(f"🛡️ [已脱敏] 查询被修改为: {safe_query}")
-            
+            #查询重写 (基于脱敏后的问题，重写本身也要调 LLM)
+            search_query = self._rewrite_query(safe_query, user_history)
+
             # --- Step 2: 检索 (Retrieval) ---
             print("🔍 正在检索知识库...")
             combined_docs = self.hybrid_retriever.retrieve(search_query, n_results=5)
@@ -283,8 +290,8 @@ class SecuRAG:
             #塞进去历史记录
             for msg in user_history[-4:]:
                 messages.append(msg)
-            messages.append({"role": "user", "content": user_query})
-            
+            messages.append({"role": "user", "content": safe_query})
+
             print("🤖 AI 正在思考...")
             try:
                 print(f"🤖 正在请求模型 ({self.model_name})...") # 👈 加个日志，看是不是卡在这里
@@ -299,17 +306,15 @@ class SecuRAG:
                 answer = response.choices[0].message.content
                 if not answer:
                     return "🤖 模型返回了空字符串 (可能被截断)。"
-                self.sessions[session_id].append({"role": "assistant", "content": answer})
-                self.sessions[session_id].append({"role": "user", "content": user_query})
                 print(f"💬 AI 回答:\n{answer}")
-                return answer
+                # 不在这里写历史/提前 return，统一走下面的记账，保证 user 在前、assistant 在后
 
             except Exception as e:
                 # 🌟 关键：打印出具体的报错信息！
                 print(f"❌生成阶段严重错误: {e}")
                 return f"系统内部错误: {str(e)}"
-        # 4. 📝 统一记账 (无论走了哪条路，都要记下来)
-        self.sessions[session_id].append({"role": "user", "content": user_query})
+        # 4. 📝 统一记账 (无论走了哪条路，都要记下来；存脱敏版，因为历史下一轮会再发给 LLM)
+        self.sessions[session_id].append({"role": "user", "content": safe_query})
         self.sessions[session_id].append({"role": "assistant", "content": answer})
         
         return answer

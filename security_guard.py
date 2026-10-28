@@ -38,12 +38,13 @@ class SecurityGuard:
         [私有方法] 第一道防线：正则 + 简单脱敏
         """
         # 1. 正则清洗 (Day 15 的逻辑)
+        # 身份证 (必须先于手机号：18 位身份证中间常含 1[3-9]xxxxxxxxx，会被手机号规则截走一段)
+        # (?<!\d)/(?!\d) 保证是完整数字串，不在更长的数字里截一段
+        text = re.sub(r"(?<!\d)(\d{17}[\dXx]|\d{15})(?!\d)", "[ID_REDACTED]", text)
         # 手机号
-        text = re.sub(r"1[3-9]\d{9}", "[PHONE_REDACTED]", text)
+        text = re.sub(r"(?<!\d)(?:\+?86[- ]?)?1[3-9]\d{9}(?!\d)", "[PHONE_REDACTED]", text)
         # 邮箱
         text = re.sub(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}", "[EMAIL_REDACTED]", text)
-        # 身份证
-        text = re.sub(r"\d{17}[\dXx]|\d{15}", "[ID_REDACTED]", text)
         
         return text
 
