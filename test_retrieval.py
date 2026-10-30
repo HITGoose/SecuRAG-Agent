@@ -22,7 +22,6 @@ import re
 import unicodedata
 
 import chromadb
-import jieba
 
 from hybrid_retriever import HybridRetriever
 from reranker import Reranker
@@ -52,15 +51,6 @@ def quiet():
     """检索器/重排器每次调用都会 print，评测时屏蔽掉"""
     with contextlib.redirect_stdout(io.StringIO()):
         yield
-
-
-def bm25_topk(retriever: HybridRetriever, query: str, k: int) -> list:
-    """纯 BM25 结果 (参考用)，逻辑与 HybridRetriever.retrieve 里的 BM25 分支一致"""
-    if retriever.bm25 is None:
-        retriever._build_bm25()
-    scores = retriever.bm25.get_scores(list(jieba.cut(query)))
-    top = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:k]
-    return [retriever.documents[i] for i in top]
 
 
 def validate(questions: list, all_docs: list) -> bool:
@@ -124,8 +114,8 @@ def main():
     for q in questions:
         query = q["question"]
         with quiet():
-            vector = collection.query(query_texts=[query], n_results=K)["documents"][0]
-            bm25 = bm25_topk(retriever, query, K)
+            vector = retriever._vector_search(query, K)
+            bm25 = retriever._bm25_search(query, K)
             hybrid = retriever.retrieve(query, n_results=K)
             # 对混合检索的候选重排 (引擎取 top3，这里保留 5 条以便算 R@5)
             reranked = reranker.rerank(query, hybrid, top_k=K)
