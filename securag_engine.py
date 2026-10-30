@@ -269,7 +269,9 @@ class SecuRAG:
 
             # --- Step 2: 检索 (Retrieval) ---
             print("🔍 正在检索知识库...")
-            combined_docs = self.hybrid_retriever.retrieve(search_query, n_results=5)
+            # 先用 RRF 混合检索粗召回 20 条候选，再让 CrossEncoder 精排取 top3：
+            # 候选太少时 reranker 只能在 5 条里重新排序，排在 6~20 名的正确片段永远进不来
+            combined_docs = self.hybrid_retriever.retrieve(search_query, n_results=20)
             reranked_docs = self.reranker.rerank(search_query, combined_docs, top_k=3)
             results = {'documents': [reranked_docs]}
             
