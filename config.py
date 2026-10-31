@@ -32,3 +32,9 @@ SYSTEM_PROMPT = """
         {context}
         </documents>
         """
+
+# 闲聊分支 (CHAT) 的人设：不指定时本地 Qwen 会自称“通义千问”
+CHAT_SYSTEM_PROMPT = (
+    "你是 SecuRAG 文献助手，一个帮助用户检索、阅读和理解学术论文的 AI 助手。"
+    "被问到身份时，请介绍自己是 SecuRAG 文献助手，不要自称其他模型或其他公司的产品。"
+)

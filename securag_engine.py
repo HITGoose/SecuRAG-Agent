@@ -246,7 +246,7 @@ class SecuRAG:
         if intent =="CHAT":
             print(" 进入闲聊模式(不查库)...")
             #给一个简单的system prompt，直接把问题给ai不走RAG
-            simple_prompt = "你是一个友好的ai助手"
+            simple_prompt = config.CHAT_SYSTEM_PROMPT
 
             messages = [{"role": "system", "content": simple_prompt}]   
             #加上历史记录，防遗忘
