@@ -38,7 +38,7 @@ def run_test():
         
         try:
             payload = {"query": query, "session_id": SESSION_ID}
-            response = requests.post(API_URL, json=payload, timeout=60) # R1 思考慢，超时设长点
+            response = requests.post(API_URL, json=payload, timeout=60) # 本地模型推理慢，超时设长点
             
             if response.status_code == 200:
                 answer = response.json().get("answer", "")

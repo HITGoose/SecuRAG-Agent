@@ -23,7 +23,7 @@ class SecuRAG:
         print("🚀 正在启动 SecuRAG 引擎...")
         self.mode = config.APP_MODE  # 或者 "cloud"
         if self.mode == "local":
-            print("💻 模式: 本地隐私模式 (Ollama/DeepSeek)")
+            print(f"💻 模式: 本地隐私模式 (Ollama/{config.LOCAL_MODEL_NAME})")
             print("🔒 数据主权已激活：0 数据出网")
             ollama_host = os.getenv("OLLAMA_HOST", "http://localhost:11434")
             print(f"🔌 [Engine] 正在连接 Ollama 地址: {ollama_host}") # 打印出来让你放心
@@ -32,7 +32,7 @@ class SecuRAG:
                 api_key="ollama", # 本地模式不需要 key，但必须填个占位符
                 http_client=httpx.Client(trust_env=False)
             )
-            self.model_name = "deepseek-r1" # 刚才你下载的模型名字
+            self.model_name = config.LOCAL_MODEL_NAME # 原先写死 "deepseek-r1"，和 README 里的 deepseek-r1:1.5b 不一致
         else:
         # 1. 初始化 AI 客户端 (大脑)
             print("☁️ 模式: 云端高智商模式")

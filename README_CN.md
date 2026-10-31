@@ -61,11 +61,14 @@ pip install -r requirements.txt
 
 APP_MODE=local
 OLLAMA_HOST=http://localhost:11434
-DEEPSEEK_API_KEY=你的key（云端模式需要）
+OLLAMA_MODEL=qwen2.5:7b   # 可选，默认就是这个
+DEEPSEEK_API_KEY=你的key   # 仅云端模式需要（APP_MODE=cloud，使用 deepseek-chat）
 
 ### 3. 拉取本地模型
 
-ollama pull deepseek-r1:1.5b
+ollama pull qwen2.5:7b
+
+本地模型名取自 `OLLAMA_MODEL`（默认 `qwen2.5:7b`，约 4.7 GB），必须和已经 `ollama pull` 的模型同名。内存较小的机器也可以用 `qwen2.5:3b`（约 1.9 GB）：拉取后设置 `OLLAMA_MODEL=qwen2.5:3b` 即可。
 
 ### 4. 启动服务
 
@@ -82,7 +85,7 @@ docker-compose up
 
 | 层级 | 技术 |
 |------|------|
-| 大模型 | DeepSeek / Ollama |
+| 大模型 | DeepSeek API（云端）/ Ollama 运行 Qwen2.5（本地） |
 | 向量数据库 | ChromaDB |
 | 检索 | BM25 + 稠密向量混合 |
 | 重排 | CrossEncoder |

@@ -10,7 +10,9 @@ BASE_URL = "https://api.deepseek.com"
 APP_MODE = os.getenv("APP_MODE")
 #定义一些常量 (用大写字母表示常量，这是规范)
 MODEL_NAME = "deepseek-chat"
-TEMPERATURE = 1.3 
+# 本地模式 (APP_MODE=local) 使用的 Ollama 模型，可用环境变量 OLLAMA_MODEL 覆盖；需先 `ollama pull` 同名模型
+LOCAL_MODEL_NAME = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
+TEMPERATURE = 1.3
 MAX_TOKENS = 1000
 
 #AI人设

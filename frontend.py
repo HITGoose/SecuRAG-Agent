@@ -127,7 +127,7 @@ if prompt := st.chat_input("请输入问题..."):
             try:
                 st.write("Checking Deterministic Rules (Regex)...")
                 time.sleep(0.3) 
-                st.write("Auditing via AI Firewall (DeepSeek-R1)...")
+                st.write("Auditing via AI Firewall...")
                 time.sleep(0.3) 
                 st.write("Routing to Knowledge Base...")
                 

@@ -63,11 +63,14 @@ pip install -r requirements.txt
 
 APP_MODE=local
 OLLAMA_HOST=http://localhost:11434
-DEEPSEEK_API_KEY=your_key
+OLLAMA_MODEL=qwen2.5:7b   # optional, this is the default
+DEEPSEEK_API_KEY=your_key   # cloud mode only (APP_MODE=cloud, model deepseek-chat)
 
 ### 3. Pull Local Model
 
-ollama pull deepseek-r1:1.5b
+ollama pull qwen2.5:7b
+
+The local model name comes from `OLLAMA_MODEL` (default `qwen2.5:7b`, ~4.7 GB) and must match a model you have pulled. On machines with less memory, `qwen2.5:3b` (~1.9 GB) also works: pull it and set `OLLAMA_MODEL=qwen2.5:3b`.
 
 ### 4. Run
 
@@ -84,7 +87,7 @@ Terminal 2: streamlit run frontend.py
 
 | Layer | Technology |
 |-------|-----------|
-| LLM | DeepSeek / Ollama |
+| LLM | DeepSeek API (cloud) / Qwen2.5 via Ollama (local) |
 | Vector DB | ChromaDB |
 | Retrieval | BM25 + Dense Vector |
 | Reranking | CrossEncoder |
