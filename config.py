@@ -12,7 +12,8 @@ APP_MODE = os.getenv("APP_MODE")
 MODEL_NAME = "deepseek-chat"
 # 本地模式 (APP_MODE=local) 使用的 Ollama 模型，可用环境变量 OLLAMA_MODEL 覆盖；需先 `ollama pull` 同名模型
 LOCAL_MODEL_NAME = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
-TEMPERATURE = 1.3
+# RAG 回答要忠于资料，温度过高（原 1.3）时模型会编造术语、误读检索片段
+TEMPERATURE = 0.2
 MAX_TOKENS = 1000
 
 #AI人设
