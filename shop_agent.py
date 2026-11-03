@@ -20,6 +20,7 @@ from llm_gateway import LLMGateway
 from security_guard import SecurityCheckUnavailable, SecurityGuard, llm_safety_check, redact_pii
 from shop_repository import ShopRepository
 from skill_loader import SkillLibrary, load_skill_schema
+from tracing import TraceWriter, build_trace
 from shop_tools import ShopKnowledge, ShopTools, ToolContext, err, ok, prepare_args, register_schema
 
 INTENTS = ["PRODUCT", "POLICY", "ORDER", "LOGISTICS", "RETURN_EXCHANGE", "COMPLAINT", "HUMAN", "CHAT", "UNKNOWN"]
@@ -100,7 +101,8 @@ LEAK_BLOCKED_ANSWER = "抱歉，这部分属于系统内部信息，我不能提
 
 class ShopAgent:
     def __init__(self, provider: str = "deepseek", embed_model: str = config.SHOP_EMBED_MODEL,
-                 rerank_model: str = config.SHOP_RERANK_MODEL, tool_backend: str = "local", skills: str = "off"):
+                 rerank_model: str = config.SHOP_RERANK_MODEL, tool_backend: str = "local", skills: str = "off",
+                 trace: bool = True):
         self.llm = LLMGateway(provider)
         self.guard = SecurityGuard()  # 复用 v1：正则注入检测
         self.repo = ShopRepository()  # 只用来校验登录用户是否存在；订单数据都经工具读取
@@ -112,6 +114,7 @@ class ShopAgent:
             self.mcp = ShopMCPClient()
             self.mcp.start()  # 启动 MCP Server 子进程，并核对它暴露的工具和本地 schema 一致
         self.fact_check = True  # 事实依据检查开关；只在评测里关掉做对照
+        self.tracer = TraceWriter() if trace else None  # 本地 trace 日志（logs/，不进 git）
         self.skills_mode = skills
         self.skill_lib = SkillLibrary() if skills != "off" else None
         self.tool_schemas = list(self.tools.schemas)
@@ -145,6 +148,17 @@ class ShopAgent:
         self.sessions[session_id] = {"user_id": user_id, "history": [], "current_order": None, "loaded_skills": []}
 
     def handle(self, session_id: str, message: str, mode: str = "agent") -> dict:
+        """处理一条用户消息，并把这一轮的 trace 写到本地日志（阶段5）。"""
+        self.llm.log = []  # 网关按调用顺序记录每次模型调用（用途、实际后端、token、重试、降级）
+        out = self._handle(session_id, message, mode)
+        out["llm"] = list(self.llm.log)
+        out["trace_id"] = uuid.uuid4().hex[:12]
+        if self.tracer:
+            self.tracer.write(build_trace(out["trace_id"], session_id, self.sessions[session_id]["user_id"],
+                                          out["message"], out, out["llm"]))
+        return out
+
+    def _handle(self, session_id: str, message: str, mode: str) -> dict:
         start = time.perf_counter()
         session = self.sessions[session_id]
         ctx = ToolContext(user_id=session["user_id"], request_id=uuid.uuid4().hex[:12])
@@ -182,7 +196,7 @@ class ShopAgent:
                                  "status": "ok" if res["ok"] else "tool_failed", "via": self._via("transfer_to_human"),
                                  "error_code": (res.get("error") or {}).get("code"), "latency_ms": 0})
             answer = (f"已为您生成模拟人工工单 {res['data']['工单号']}，人工客服会在服务时间内处理（演示流程）。"
-                      if res["ok"] else "抱歉，转人工工单没有创建成功，请稍后再试。")
+                      if res["ok"] else "抱歉，转人工请求暂时没有得到确认（可能仍在处理中）。请稍后再试，重复提交不会重复建单。")
             return self._reply(out, session, safe_msg, answer, "human", start)
         if intent in NEEDS_ORDER and not session["current_order"]:
             try:  # 订单列表也经工具读取（mcp 模式下走 MCP Server），不直接读数据层
@@ -275,7 +289,7 @@ class ShopAgent:
         try:
             reply = self.llm.chat([
                 {"role": "system", "content": BASELINE_ANSWER_PROMPT.format(now=config.SIMULATION_NOW, data=data)},
-                *session["history"][-6:], {"role": "user", "content": safe_msg}])
+                *session["history"][-6:], {"role": "user", "content": safe_msg}], purpose="fact_check")
         except Exception:
             out["llm_calls"] += 1
             out["fact_check"] = "fallback"
@@ -299,7 +313,7 @@ class ShopAgent:
         history = "\n".join(f"{m['role']}: {m['content'][:200]}" for m in session["history"][-4:]) or "（无）"
         try:
             reply = self.llm.chat([{"role": "user", "content": INTENT_PROMPT.format(history=history, message=safe_msg)}],
-                                  temperature=0.0, max_tokens=20)
+                                  temperature=0.0, max_tokens=20, purpose="intent")
         except Exception:
             out["llm_calls"] += 1
             return "UNKNOWN"
@@ -335,7 +349,7 @@ class ShopAgent:
             reply = self.llm.chat([
                 {"role": "system", "content": BASELINE_ANSWER_PROMPT.format(now=config.SIMULATION_NOW,
                                                                             data="\n".join(data) or "（无）")},
-                *session["history"][-6:], {"role": "user", "content": safe_msg}])
+                *session["history"][-6:], {"role": "user", "content": safe_msg}], purpose="baseline")
         except Exception:
             out["llm_calls"] += 1
             out["stop_reason"] = "llm_error"
@@ -361,5 +375,5 @@ class ShopAgent:
             remember = False
         if remember:  # 被拦截的消息不进历史，免得攻击文本在后续轮次里继续影响模型
             session["history"] += [{"role": "user", "content": safe_msg}, {"role": "assistant", "content": answer}]
-        out.update(answer=answer, route=route, latency_ms=int((time.perf_counter() - start) * 1000))
+        out.update(answer=answer, route=route, message=safe_msg, latency_ms=int((time.perf_counter() - start) * 1000))
         return out

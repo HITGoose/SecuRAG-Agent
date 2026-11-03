@@ -1,0 +1,130 @@
+{
+ "模型故障注入": [
+  {
+   "场景": "429 一次后恢复",
+   "结果": "成功",
+   "实际后端": "deepseek",
+   "重试": 1,
+   "降级原因": null,
+   "回复": "好的",
+   "deepseek尝试次数": 2,
+   "ollama尝试次数": 0
+  },
+  {
+   "场景": "503 持续",
+   "结果": "成功",
+   "实际后端": "ollama",
+   "重试": 0,
+   "降级原因": "InternalServerError",
+   "回复": "好的",
+   "deepseek尝试次数": 3,
+   "ollama尝试次数": 1
+  },
+  {
+   "场景": "超时持续",
+   "结果": "成功",
+   "实际后端": "ollama",
+   "重试": 0,
+   "降级原因": "APITimeoutError",
+   "回复": "好的",
+   "deepseek尝试次数": 3,
+   "ollama尝试次数": 1
+  },
+  {
+   "场景": "401 认证失败",
+   "结果": "成功",
+   "实际后端": "ollama",
+   "重试": 0,
+   "降级原因": "AuthenticationError",
+   "回复": "好的",
+   "deepseek尝试次数": 1,
+   "ollama尝试次数": 1
+  },
+  {
+   "场景": "400 参数错误",
+   "结果": "抛出 BadRequestError",
+   "deepseek尝试次数": 1,
+   "ollama尝试次数": 0
+  },
+  {
+   "场景": "云端和本地都失败",
+   "结果": "抛出 APIConnectionError",
+   "deepseek尝试次数": 3,
+   "ollama尝试次数": 3
+  }
+ ],
+ "降级可用率_DeepSeek一直503": {
+  "场景": "ds-down",
+  "用户轮": 16,
+  "正常返回业务回复": 16,
+  "可用率": "16/16",
+  "任务通过": "12/15",
+  "模型调用按实际后端": {
+   "ollama": 49
+  },
+  "延迟中位数ms": 2437.5,
+  "固定失败话术示例": null
+ },
+ "降级可用率_云端本地都失败": {
+  "场景": "both-down",
+  "用户轮": 3,
+  "正常返回业务回复": 0,
+  "可用率": "0/3",
+  "任务通过": "0/3",
+  "模型调用按实际后端": {
+   "ollama(失败)": 3
+  },
+  "延迟中位数ms": 302,
+  "固定失败话术示例": "抱歉，安全检查服务暂时不可用，为保护您的信息，本次请求未被处理，请稍后再试。"
+ },
+ "MCP超时": {
+  "物流超时一次后恢复": {
+   "route": "agent",
+   "fact_check": "forced_tool",
+   "latency_ms": 7167,
+   "tools": [
+    "track_shipment:timeout:TIMEOUT",
+    "track_shipment:duplicate:TIMEOUT",
+    "track_shipment:ok:None:forced"
+   ],
+   "answer": "订单 ORD-DEMO-0009 目前物流状态为“运输中”，最新轨迹：2026-11-03 04:00 快件到达演示转运中心A（顺丰演示快递，运单号 SFX-DEMO-26273529）。",
+   "回答含真实位置": true
+  },
+  "物流一直超时": {
+   "route": "agent",
+   "fact_check": "fallback",
+   "latency_ms": 8898,
+   "tools": [
+    "track_shipment:timeout:TIMEOUT",
+    "track_shipment:duplicate:TIMEOUT",
+    "track_shipment:tool_failed:TOOL_ERROR:forced"
+   ],
+   "answer": "我先帮你查一下……抱歉，订单/物流系统暂时没有返回结果，我不能凭猜测告诉你订单或物流状态。请稍后再试，或者我可以帮你转人工客服。",
+   "是固定话术": true
+  },
+  "转人工响应超时": {
+   "route": "human",
+   "fact_check": null,
+   "latency_ms": 4300,
+   "tools": [
+    "transfer_to_human:ok:None"
+   ],
+   "answer": "已为您生成模拟人工工单 TKT-DEMO-00062，人工客服会在服务时间内处理（演示流程）。",
+   "新增工单数": 1,
+   "新增工单": [
+    "TKT-DEMO-00062"
+   ],
+   "客户端超时重试次数": 1
+  },
+  "故障解除后": {
+   "route": "agent",
+   "fact_check": "passed",
+   "latency_ms": 3319,
+   "tools": [
+    "track_shipment:ok:None"
+   ],
+   "answer": "订单 ORD-DEMO-0009 的物流信息如下：\n\n- 快递公司：顺丰演示快递\n- 运单号：SFX-DEMO-26273529\n- 状态：运输中，未停滞\n- 最新轨迹：2026-11-03 04:00 快件到达演示转运中心A\n- 此前轨迹：2026-11-02 11:00 商家已发货，快递已揽收（演示仓）\n\n目前包裹在转运途中，暂无异常。需要我帮你催件或转人工吗？",
+   "回答含真实位置": true
+  }
+ }
+}

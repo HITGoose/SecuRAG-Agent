@@ -24,6 +24,7 @@ from shop_tools import SCHEMA_BY_NAME, ToolContext
 ROOT = Path(__file__).parent
 MCP_TOOLS = {"get_order", "track_shipment", "transfer_to_human"}  # 白名单：只接纳这几个
 INJECTED = {"user_id", "request_id"}                               # 由适配器注入、对模型隐藏的参数
+IDEMPOTENT_WRITES = {"transfer_to_human"}  # 写操作但有幂等键：超时后可以安全地用同一个 request_id 再试一次
 
 
 class MCPToolError(Exception):
@@ -38,6 +39,7 @@ class ShopMCPClient:
         self._portal_cm = self._portal = None
         self._client_cm = self._client = None
         self.reconnects = 0
+        self.timeout_retries = 0
 
     # ---------- 生命周期 ----------
 
@@ -94,7 +96,13 @@ class ShopMCPClient:
         try:
             return self._call_once(name, full_args)
         except TimeoutError:
-            raise  # 超时不重试：可能只是慢，重试会叠加等待时间
+            # 只读查询超时不重试：可能只是慢，重试会叠加等待时间，交给事实检查兜底。
+            # 转人工超时要重试：Server 可能已经建了单只是响应晚了；同一个 request_id 再调一次，
+            # 有单就返回原单（幂等），没有就新建——不会出现"其实建了但告诉用户没建"。
+            if name not in IDEMPOTENT_WRITES:
+                raise
+            self.timeout_retries += 1
+            return self._call_once(name, full_args)
         except Exception:
             # 断连等错误：重启 Server 再试一次。transfer_to_human 有幂等键，重试不会重复建单
             self.reconnects += 1

@@ -7,7 +7,9 @@
   服务端仍然逐次检查订单归属（在 shop_repository 里），并再校验一遍模型可传的参数。
 - 演示用的身份传递方式不是生产鉴权：stdio 只在本机父子进程之间通信，不暴露到网络。
 """
+import os
 import sys
+import time
 
 from mcp.server.mcpserver import MCPServer
 
@@ -20,6 +22,12 @@ tools = ShopTools(repo)  # 不带知识库：这个进程只提供订单类工�
 
 TRUSTED = "由客户端适配器注入的可信参数，不是模型参数"
 
+# 故障注入（阶段5，只在测试时通过环境变量开启）：SHOP_MCP_FAULT_DELAY="工具名:秒数:次数"
+# 表示该工具的前 N 次调用在"已经执行完"之后再延迟返回，模拟 Server 做完了但响应超时
+_fault = os.getenv("SHOP_MCP_FAULT_DELAY", "")
+FAULT_TOOL, FAULT_SECONDS, FAULT_TIMES = _fault.split(":") if _fault else ("", "0", "0")
+_fault_left = {FAULT_TOOL: int(FAULT_TIMES)}
+
 
 def _run(name: str, user_id: str, request_id: str, model_args: dict) -> dict:
     print(f"[shop-mcp] call {name} user={user_id} args={model_args}", file=sys.stderr, flush=True)
@@ -28,7 +36,12 @@ def _run(name: str, user_id: str, request_id: str, model_args: dict) -> dict:
     args, error_msg = prepare_args(name, model_args)  # 服务端再校验一次，不完全信任客户端
     if error_msg:
         return err("BAD_ARGUMENTS", error_msg)
-    return tools.execute(name, args, ToolContext(user_id=user_id, request_id=request_id))
+    result = tools.execute(name, args, ToolContext(user_id=user_id, request_id=request_id))
+    if _fault_left.get(name, 0) > 0:
+        _fault_left[name] -= 1
+        print(f"[shop-mcp] fault: delay {name} response {FAULT_SECONDS}s", file=sys.stderr, flush=True)
+        time.sleep(float(FAULT_SECONDS))
+    return result
 
 
 @server.tool(description="查询当前用户的订单。传 order_id 查单个订单详情（含签收日期和退换货期限）；不传则列出最近的订单。")

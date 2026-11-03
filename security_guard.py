@@ -106,7 +106,7 @@ def llm_safety_check(llm, text: str) -> bool:
     """
     try:
         reply = llm.chat([{"role": "user", "content": SHOP_SAFETY_PROMPT.format(text=text)}],
-                         temperature=0.0, max_tokens=10)
+                         temperature=0.0, max_tokens=10, purpose="safety")
     except Exception as e:
         raise SecurityCheckUnavailable(type(e).__name__) from e
     verdict = re.sub(r"[^A-Z]", "", (reply.message.get("content") or "").upper())
