@@ -7,6 +7,7 @@ v2 电商客服 Agent 的入口：安全层 → 意图识别 → （程序直接
     agent.handle("s1", "我的订单到哪了")        # 返回 dict：answer、intent、route、steps、llm_calls、latency_ms ...
     agent.handle("s1", "...", mode="baseline") # 写死流程基线：按意图查表调用固定工具
     ShopAgent(tool_backend="mcp")              # 订单/物流/工单工具改为经 MCP Server 调用（阶段2）
+    ShopAgent(skills="ondemand")               # 业务技能：off / full（全文常驻）/ ondemand（描述 + load_skill 按需加载）（阶段3）
 """
 import re
 import time
@@ -17,7 +18,8 @@ from agent_loop import run_agent_loop
 from llm_gateway import LLMGateway
 from security_guard import SecurityCheckUnavailable, SecurityGuard, llm_safety_check, redact_pii
 from shop_repository import ShopRepository
-from shop_tools import ShopKnowledge, ShopTools, ToolContext, prepare_args
+from skill_loader import SkillLibrary, load_skill_schema
+from shop_tools import ShopKnowledge, ShopTools, ToolContext, err, ok, prepare_args, register_schema
 
 INTENTS = ["PRODUCT", "POLICY", "ORDER", "LOGISTICS", "RETURN_EXCHANGE", "COMPLAINT", "HUMAN", "CHAT", "UNKNOWN"]
 NEEDS_ORDER = {"ORDER", "LOGISTICS", "RETURN_EXCHANGE"}
@@ -84,7 +86,7 @@ UNKNOWN_ANSWER = "抱歉，我没太明白您的问题。您是想咨询商品�
 
 class ShopAgent:
     def __init__(self, provider: str = "deepseek", embed_model: str = config.SHOP_EMBED_MODEL,
-                 rerank_model: str = config.SHOP_RERANK_MODEL, tool_backend: str = "local"):
+                 rerank_model: str = config.SHOP_RERANK_MODEL, tool_backend: str = "local", skills: str = "off"):
         self.llm = LLMGateway(provider)
         self.guard = SecurityGuard()  # 复用 v1：正则注入检测
         self.repo = ShopRepository()  # 只用来校验登录用户是否存在；订单数据都经工具读取
@@ -95,6 +97,13 @@ class ShopAgent:
             self.mcp_tools = MCP_TOOLS
             self.mcp = ShopMCPClient()
             self.mcp.start()  # 启动 MCP Server 子进程，并核对它暴露的工具和本地 schema 一致
+        self.skills_mode = skills
+        self.skill_lib = SkillLibrary() if skills != "off" else None
+        self.tool_schemas = list(self.tools.schemas)
+        if skills == "ondemand":  # 只有渐进加载模式才把 load_skill 交给模型
+            schema = load_skill_schema(self.skill_lib.names)
+            register_schema(schema)
+            self.tool_schemas.append(schema)
         self.sessions = {}  # session_id -> {"user_id", "history", "current_order"}
 
     def close(self) -> None:
@@ -105,6 +114,10 @@ class ShopAgent:
         """所有工具调用的唯一出口：订单类工具在 mcp 模式下走 MCP Server，其余在本进程执行。"""
         if self.mcp and name in self.mcp_tools:
             return self.mcp.call(name, args, ctx)
+        if name == "load_skill":
+            if self.skills_mode != "ondemand":
+                return err("NOT_AVAILABLE", "当前模式没有 load_skill 工具")
+            return ok(self.skill_lib.load(args["name"]), [f"skill:{args['name']}"])
         return self.tools.execute(name, args, ctx)
 
     def _via(self, name: str) -> str:
@@ -114,7 +127,7 @@ class ShopAgent:
         """模拟登录：服务端把会话绑定到用户。真实系统里这一步来自鉴权，不来自对话内容。"""
         if user_id not in self.repo.users:
             raise ValueError(f"未知用户 {user_id}")
-        self.sessions[session_id] = {"user_id": user_id, "history": [], "current_order": None}
+        self.sessions[session_id] = {"user_id": user_id, "history": [], "current_order": None, "loaded_skills": []}
 
     def handle(self, session_id: str, message: str, mode: str = "agent") -> dict:
         start = time.perf_counter()
@@ -182,12 +195,13 @@ class ShopAgent:
         hints = f"本轮意图提示（仅供参考）：{intent}"
         if session["current_order"]:
             hints += f"\n会话中正在讨论的订单：{session['current_order']}（直接用它查询，不要再问订单号）"
-        messages = [{"role": "system", "content": AGENT_SYSTEM_PROMPT.format(now=config.SIMULATION_NOW, hints=hints)}]
+        system = AGENT_SYSTEM_PROMPT.format(now=config.SIMULATION_NOW, hints=hints) + self._skills_section(session)
+        messages = [{"role": "system", "content": system}]
         messages += session["history"][-6:]
         messages.append({"role": "user", "content": safe_msg})
 
         loop = run_agent_loop(
-            self.llm, messages, self.tools.schemas, prepare_args,
+            self.llm, messages, self.tool_schemas, prepare_args,
             execute_tool=lambda name, args: self._exec(name, args, ctx),  # 用户身份在这里绑定
             max_steps=config.MAX_STEPS, max_tool_calls=config.MAX_TOOL_CALLS,
             max_calls_per_response=config.MAX_CALLS_PER_RESPONSE, tool_timeout_s=config.TOOL_TIMEOUT_S)
@@ -197,12 +211,27 @@ class ShopAgent:
         out["input_tokens"] += loop.input_tokens
         out["output_tokens"] += loop.output_tokens
         out["tokens_complete"] &= loop.tokens_complete
+        for s in loop.steps:  # 本轮加载过的技能，后续轮次直接带上正文，不用模型再加载一次
+            if s["tool"] == "load_skill" and s["status"] == "ok" and s["args"]["name"] not in session["loaded_skills"]:
+                session["loaded_skills"].append(s["args"]["name"])
         for s in loop.steps:  # 工具里成功查过的订单，作为后续轮次的"当前订单"
             if s["status"] == "ok" and s["args"] and s["args"].get("order_id"):
                 session["current_order"] = s["args"]["order_id"]
         return self._reply(out, session, safe_msg, loop.answer, "agent", start)
 
     # ---------- 内部 ----------
+
+    def _skills_section(self, session) -> str:
+        """按技能模式拼到系统提示末尾的部分。"""
+        if self.skills_mode == "full":
+            return "\n\n## 业务流程（处理对应业务时按流程执行）\n\n" + self.skill_lib.full_text()
+        if self.skills_mode == "ondemand":
+            section = ("\n\n## 可用业务技能\n处理下列业务前，先调用 load_skill 加载对应技能的完整流程：\n"
+                       + self.skill_lib.catalog())
+            if session["loaded_skills"]:
+                section += "\n\n## 本会话已加载的技能\n\n" + self.skill_lib.full_text(session["loaded_skills"])
+            return section
+        return ""
 
     def _classify(self, session, safe_msg, out) -> str:
         history = "\n".join(f"{m['role']}: {m['content'][:200]}" for m in session["history"][-4:]) or "（无）"

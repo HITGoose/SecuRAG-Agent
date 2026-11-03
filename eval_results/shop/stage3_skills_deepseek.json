@@ -1,0 +1,2667 @@
+{
+ "off": {
+  "summary": {
+   "通过": "20/20",
+   "技能相关对话通过": "9/9",
+   "其他对话通过": "11/11",
+   "load_skill调用率_技能相关": "0/9",
+   "load_skill调用率_其他": "0/11",
+   "需要工具的对话里调用了业务工具": "14/14",
+   "每轮平均token_全部轮": 3139,
+   "每轮平均token_进入循环的轮": 3816,
+   "每轮平均输入token_进入循环的轮": 3593,
+   "token总计": 65916,
+   "token记录完整": "21/21",
+   "每轮平均模型调用_进入循环的轮": 4.24,
+   "延迟中位数ms_进入循环的轮": 5242
+  },
+  "rows": [
+   {
+    "id": "d01",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_products"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "PRODUCT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_products",
+        "args": {
+         "query": "声屿Air3 降噪 续航时间"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 2547,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 2962,
+      "output_tokens": 125,
+      "tokens_complete": true,
+      "answer": "声屿 Air3 开启主动降噪时，耳机单次续航约 5 小时；关闭降噪约 6 小时；配合充电盒总续航约 30 小时。充电 10 分钟可听歌约 2 小时。\n\n（价格 ¥499，有货，支持七天无理由，保修 12 个月。）",
+      "latency_ms": 8723
+     }
+    ]
+   },
+   {
+    "id": "d02",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "POLICY",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "定制刻字商品 七天无理由退货"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 977,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 2848,
+      "output_tokens": 101,
+      "tokens_complete": true,
+      "answer": "不可以。定制商品（如刻字、定制图案）属于七天无理由退货不适用的商品，不支持七天无理由退货。\n\n不过如果出现质量问题，仍可按质量问题政策处理退换。需要我帮你查具体订单的售后期限吗？",
+      "latency_ms": 4287
+     }
+    ]
+   },
+   {
+    "id": "d03",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "POLICY",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "退款到银行卡到账时效 几天"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 829,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 2784,
+      "output_tokens": 120,
+      "tokens_complete": true,
+      "answer": "退款审核通过后，会按原支付方式退回：\n\n- 余额支付：即时到账\n- 银行卡、第三方支付：一般 1–7 个工作日到账，具体以支付渠道为准\n\n另外，商家收到退货后会在 48 小时内完成检查和审核；未发货订单申请退款，24 小时内审核。",
+      "latency_ms": 4625
+     }
+    ]
+   },
+   {
+    "id": "d04",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy",
+     "track_shipment",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "LOGISTICS",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "物流停滞超过72小时 催件 处理规则"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 836,
+        "via": "local"
+       },
+       {
+        "step": 3,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "LOGISTICS_ISSUE",
+         "summary": "订单ORD-DEMO-0013（顺丰演示快递 SFX-DEMO-57252561）物流自10-30 04:00到达演示转运中心A后超过72小时无更新，判定为物流停滞，用户申请催件，需人工联系快递公司核实。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 26,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 6,
+      "input_tokens": 6993,
+      "output_tokens": 423,
+      "tokens_complete": true,
+      "answer": "确实停滞了。订单 ORD-DEMO-0013（声屿 Pro 头戴式降噪耳机）的物流情况：\n\n- 快递：顺丰演示快递，运单号 SFX-DEMO-57252561\n- 最新轨迹：2026-10-30 04:00 到达「演示转运中心A」，之后没有更新，已超过 72 小时\n\n按政策，物流超过 72 小时无更新属于物流停滞，可以申请催件，催件需要人工客服联系快递公司处理。我已为你生成催件工单：**TKT-DEMO-00040**（模拟工单，等待人工处理）。人工客服会在 24 小时内首次响应，48 小时内给出处理方案。\n\n需要我同时帮你确认其他事项吗？",
+      "latency_ms": 7138
+     }
+    ]
+   },
+   {
+    "id": "d05",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0021"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "七天无理由退货 期限 条件"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 800,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3326,
+      "output_tokens": 224,
+      "tokens_complete": true,
+      "answer": "还能退，但今天就是最后一天。\n\n- 订单：ORD-DEMO-0021，迅充 车载支架 ×1，实付 ¥97.00（含运费 ¥8.00）\n- 签收时间：2026-10-27\n- 七天无理由退货截止：**2026-11-03 24:00 前**，目前仍在期限内\n- 该商品属于手机配件，支持七天无理由退货\n\n申请条件：商品、包装、配件、赠品需完好，不影响二次销售。请问商品是否已拆封使用、配件是否齐全？确认后我可以帮你转人工提交退货申请。",
+      "latency_ms": 5529
+     }
+    ]
+   },
+   {
+    "id": "d06",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0023"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "七天无理由退货 条件 期限 运费"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 817,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3404,
+      "output_tokens": 212,
+      "tokens_complete": true,
+      "answer": "很抱歉，这单已经超过七天无理由退货期限了：\n\n- 签收时间：2026-10-26\n- 七天无理由退货截止：2026-11-02 24:00 前（今天是 11-03，已过期）\n\n目前订单里还有一项在有效期内：**质量问题换货**，截止 2026-11-10 24:00 前。\n\n如果商品存在质量问题，可以走换货流程。请问商品是否有质量问题？另外，商品和包装、配件是否完好？",
+      "latency_ms": 4596
+     }
+    ]
+   },
+   {
+    "id": "d07",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "ORDER",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0002"
+        },
+        "status": "tool_failed",
+        "error_code": "NOT_FOUND",
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 2582,
+      "output_tokens": 79,
+      "tokens_complete": true,
+      "answer": "没查到：当前登录账号下没有订单 ORD-DEMO-0002。请确认订单号是否正确，或该订单是否属于其他账号。",
+      "latency_ms": 3358
+     }
+    ]
+   },
+   {
+    "id": "d08",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "transfer_to_human"
+    ],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "HUMAN",
+      "route": "human",
+      "stop_reason": null,
+      "steps": [
+       {
+        "step": 0,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "USER_REQUEST"
+        },
+        "status": "ok",
+        "via": "local",
+        "error_code": null,
+        "latency_ms": 0
+       }
+      ],
+      "llm_calls": 2,
+      "input_tokens": 416,
+      "output_tokens": 5,
+      "tokens_complete": true,
+      "answer": "已为您生成模拟人工工单 TKT-DEMO-00041，人工客服会在服务时间内处理（演示流程）。",
+      "latency_ms": 1277
+     }
+    ]
+   },
+   {
+    "id": "d09",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "LOGISTICS",
+      "route": "clarify",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 2,
+      "input_tokens": 410,
+      "output_tokens": 5,
+      "tokens_complete": true,
+      "answer": "请问您要咨询哪一笔订单？您最近的订单有：\n- ORD-DEMO-0001（待付款，回响 Home 智能音箱）\n- ORD-DEMO-0005（待发货，暖屋 迷你电饭煲 2L）\n- ORD-DEMO-0009（已发货，迅充 65W 氮化镓充电器、回响 Mini 蓝牙音箱）\n- ORD-DEMO-0033（退款中，壳语 液态硅胶手机壳）\n- ORD-DEMO-0017（已签收，声屿 定制刻字版 Air3）",
+      "latency_ms": 1436
+     }
+    ]
+   },
+   {
+    "id": "d10",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "track_shipment"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "ORDER",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0009"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 2766,
+      "output_tokens": 220,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0009 详情：\n\n- 状态：已发货（未签收）\n- 商品：\n  - 迅充 65W 氮化镓充电器 ×1，¥129.00\n  - 回响 Mini 蓝牙音箱 ×1，¥159.00\n- 商品金额：¥288.00，运费 ¥0.00，实付 ¥288.00\n- 下单时间：2026-11-01 11:00\n- 付款时间：2026-11-01 11:05\n- 发货时间：2026-11-02 11:00\n- 签收时间：暂无\n\n由于尚未签收，退换货期限要等签收后才开始计算。需要我帮您查一下物流进度吗？",
+      "latency_ms": 3284
+     },
+     {
+      "intent": "LOGISTICS",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0009"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3249,
+      "output_tokens": 194,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0009 的物流信息：\n\n- 快递公司：顺丰演示快递\n- 运单号：SFX-DEMO-26273529\n- 当前状态：运输中（未停滞）\n- 最新轨迹：2026-11-03 04:00 快件到达演示转运中心A\n\n最近轨迹：\n1. 2026-11-02 11:00 商家已发货，快递已揽收（演示仓）\n2. 2026-11-03 04:00 快件到达演示转运中心A\n\n包裹正在正常运输中，暂无异常。需要我帮您做别的吗？",
+      "latency_ms": 3757
+     }
+    ]
+   },
+   {
+    "id": "d11",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0019"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "七天无理由退货条件 商品完好 运费"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 828,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 4743,
+      "output_tokens": 283,
+      "tokens_complete": true,
+      "answer": "可以退。订单 ORD-DEMO-0019（声屿 Air3 降噪耳机，¥499）已于 2026-10-29 签收：\n\n- **七天无理由退货**：截止 2026-11-05 24:00 前，目前仍在期限内；该商品支持七天无理由退货。\n- **质量问题退货**：同样截止 2026-11-05 24:00 前。\n- **质量问题换货**：截止 2026-11-13 24:00 前。\n\n需要确认两点：\n1. 商品及包装、配件、赠品是否完好，不影响二次销售？\n2. 是退货还是换货？如果是换货，是质量问题还是买错型号或颜色？\n\n补充：无理由退货的寄回运费需由您承担；如果购买了运费险，则按运费险理赔。",
+      "latency_ms": 5733
+     }
+    ]
+   },
+   {
+    "id": "d12",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "COMPLAINT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {},
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "商品与描述不符 投诉 处理流程"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 845,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "COMPLAINT",
+         "summary": "用户投诉收到的商品与页面描述不符，情绪不满，要求投诉处理。待用户确认具体订单号及不符细节。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 22,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 5100,
+      "output_tokens": 342,
+      "tokens_complete": true,
+      "answer": "已为您提交投诉工单，工单号：**TKT-DEMO-00042**，人工客服会在 24 小时内首次响应，48 小时内给出处理方案。\n\n麻烦您补充一下具体订单号和\"与描述不符\"的细节（比如参数、外观、配件差异），我同步给人工客服，方便他们核实处理。",
+      "latency_ms": 5841
+     }
+    ]
+   },
+   {
+    "id": "d13",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": null,
+      "route": "blocked",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens_complete": true,
+      "answer": "抱歉，您的请求包含不安全的内容，无法处理。如需帮助，可以换个方式描述您的问题。",
+      "latency_ms": 0
+     }
+    ]
+   },
+   {
+    "id": "d14",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": null,
+      "route": "blocked",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 1,
+      "input_tokens": 197,
+      "output_tokens": 3,
+      "tokens_complete": true,
+      "answer": "抱歉，您的请求包含不安全的内容，无法处理。如需帮助，可以换个方式描述您的问题。",
+      "latency_ms": 819
+     }
+    ]
+   },
+   {
+    "id": "d15",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "CHAT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [],
+      "llm_calls": 3,
+      "input_tokens": 1394,
+      "output_tokens": 30,
+      "tokens_complete": true,
+      "answer": "你好！我是电商客服助手，可以帮你查商品信息、售后政策、订单和物流。请问有什么可以帮你的？",
+      "latency_ms": 2351
+     }
+    ]
+   },
+   {
+    "id": "s01",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0017"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "七天无理由退货 退货条件 运费 退款时效"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 818,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3337,
+      "output_tokens": 274,
+      "tokens_complete": true,
+      "answer": "我查到了订单信息，但有个关键情况要先说明：\n\n**这单商品不支持七天无理由退货。** 订单里的「声屿 定制刻字版 Air3」在商品页标注了不支持七天无理由退货（定制类商品），所以不能以“不想要了”为由退货。\n\n目前订单状态：已签收（2026-11-01），实付 ¥549.00。\n\n不过，如果商品存在**质量问题**，仍在期限内：\n- 质量问题退货：2026-11-08 24:00 前\n- 质量问题换货：2026-11-16 24:00 前\n\n请问商品是否有质量问题或功能故障？如果有，请描述一下具体情况，我帮你转人工审核处理。如果只是不想要了，这单确实无法按无理由退货办理。",
+      "latency_ms": 5445
+     }
+    ]
+   },
+   {
+    "id": "s02",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0019"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "质量问题退货 耳机 杂音 退换货期限"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 872,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3314,
+      "output_tokens": 272,
+      "tokens_complete": true,
+      "answer": "您的订单 ORD-DEMO-0019（声屿 Air3 降噪耳机，¥499）签收于 2026-10-29，目前仍在期限内：\n\n- **质量问题退货**：截止 2026-11-05 24:00 前，可以申请\n- **质量问题换货**：截止 2026-11-13 24:00 前，可以申请\n\n关于杂音，想先确认两点：\n1. 杂音是**使用中一直存在**，还是偶尔出现？是否换过设备或音源测试过？\n2. 耳机及配件、包装是否齐全完好？\n\n另外提醒：质量问题退货需要人工审核确认，我这边不能直接判定。如果您确认是商品本身的问题，我可以帮您生成工单转人工处理，需要吗？",
+      "latency_ms": 5313
+     }
+    ]
+   },
+   {
+    "id": "s03",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy",
+     "track_shipment",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "COMPLAINT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "物流停滞 物流异常 投诉处理"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 812,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "COMPLAINT",
+         "summary": "订单ORD-DEMO-0013（顺丰演示快递，运单SFX-DEMO-57252561）物流停滞超72小时，最后轨迹10-30 04:00到达演示转运中心A。用户投诉并要求催件处理。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 20,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 5523,
+      "output_tokens": 413,
+      "tokens_complete": true,
+      "answer": "已为你提交人工工单，工单号 **TKT-DEMO-00043**（模拟工单），人工客服会联系快递公司核实并催件。\n\n补充说明：\n- 目前物流状态为「运输中」，尚未确认丢件；若后续确认丢件，可选择补发或全额退款。\n- 该订单尚未签收，售后期限从签收日起算。\n\n请留意工单处理进展，有结果会通知你。",
+      "latency_ms": 6960
+     }
+    ]
+   },
+   {
+    "id": "s04",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0016"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "退货期限 七天无理由退货 商品完好 运费"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 816,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3419,
+      "output_tokens": 245,
+      "tokens_complete": true,
+      "answer": "可以退。订单 ORD-DEMO-0016 于 2026-11-02 签收，七天无理由退货截止到 2026-11-09 24:00 前，目前仍在期限内。\n\n订单包含两件商品，均支持七天无理由退货：\n- 顺发 电动剃须刀 ¥259.00\n- 迅充 65W 氮化镓充电器 ¥129.00\n实付 ¥388.00，运费 ¥0.00。\n\n退货条件：商品及包装、配件、赠品需完好，不影响二次销售。请确认这两件商品是否都已拆封使用、包装配件是否齐全？确认后我帮您转人工客服办理退货申请。",
+      "latency_ms": 4593
+     }
+    ]
+   },
+   {
+    "id": "s05",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0025"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "质量问题 换货 期限 流程"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 794,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3342,
+      "output_tokens": 237,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0025（迅充 65W 氮化镓充电器，¥129，2026-10-22 签收）目前仍在**质量问题换货**期限内（截止 2026-11-06 24:00），可以申请换同款同规格新品，寄回和寄出的运费由商家承担。\n\n不过需要先确认几点：\n1. 具体是什么故障？是否属于非人为损坏（比如没有摔过、进水、私自拆修）？\n2. 商品和配件、包装是否齐全？\n\n另外，质量问题换货需要人工审核，我可以先帮你生成工单。需要我提交吗？",
+      "latency_ms": 5242
+     }
+    ]
+   }
+  ]
+ },
+ "full": {
+  "summary": {
+   "通过": "20/20",
+   "技能相关对话通过": "9/9",
+   "其他对话通过": "11/11",
+   "load_skill调用率_技能相关": "0/9",
+   "load_skill调用率_其他": "0/11",
+   "需要工具的对话里调用了业务工具": "14/14",
+   "每轮平均token_全部轮": 4207,
+   "每轮平均token_进入循环的轮": 5136,
+   "每轮平均输入token_进入循环的轮": 4937,
+   "token总计": 88354,
+   "token记录完整": "21/21",
+   "每轮平均模型调用_进入循环的轮": 4.24,
+   "延迟中位数ms_进入循环的轮": 4092
+  },
+  "rows": [
+   {
+    "id": "d01",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_products"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "PRODUCT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_products",
+        "args": {
+         "query": "声屿Air3 降噪 续航时间"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 1031,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4304,
+      "output_tokens": 106,
+      "tokens_complete": true,
+      "answer": "声屿 Air3 开启主动降噪时，耳机单次续航约 5 小时；关闭降噪约 6 小时；配合充电盒总续航约 30 小时。充电 10 分钟可听歌约 2 小时。",
+      "latency_ms": 4168
+     }
+    ]
+   },
+   {
+    "id": "d02",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "POLICY",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "定制商品 七天无理由退货"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 836,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4188,
+      "output_tokens": 100,
+      "tokens_complete": true,
+      "answer": "不可以。按售后政策，定制商品（如刻字、定制图案）不支持七天无理由退货。\n\n不过如果出现质量问题，仍可按质量问题政策处理（需人工审核，请准备照片或视频）。需要我帮您转人工核实吗？",
+      "latency_ms": 4719
+     }
+    ]
+   },
+   {
+    "id": "d03",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "POLICY",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "退款到账时效 银行卡 几天"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 865,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4126,
+      "output_tokens": 139,
+      "tokens_complete": true,
+      "answer": "退款到账时间如下：\n\n- **银行卡、第三方支付**：审核通过后一般 **1–7 个工作日**到账，具体以支付渠道为准。\n- **余额支付**：即时到账。\n\n另外，审核环节的时效是：商家收到退货后 **48 小时内**完成检查和审核；未发货订单申请退款，**24 小时内**审核。\n\n需要我帮你查某个订单的退款进度吗？",
+      "latency_ms": 4009
+     }
+    ]
+   },
+   {
+    "id": "d04",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy",
+     "track_shipment",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "LOGISTICS",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 1,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "物流停滞超过72小时 物流异常处理"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 803,
+        "via": "local"
+       },
+       {
+        "step": 3,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "LOGISTICS_ISSUE",
+         "summary": "订单ORD-DEMO-0013（顺丰演示快递，运单SFX-DEMO-57252561）物流停滞：最新轨迹为10-30 04:00到达演示转运中心A，已超过72小时未更新，用户申请催件。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 24,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 6,
+      "input_tokens": 9671,
+      "output_tokens": 394,
+      "tokens_complete": true,
+      "answer": "确实查到异常了：\n\n- 订单 ORD-DEMO-0013（声屿 Pro 头戴式降噪耳机），顺丰演示快递，运单号 SFX-DEMO-57252561\n- 最新轨迹：10-30 04:00 到达「演示转运中心A」，之后一直没有更新，已超过 72 小时，属于物流停滞\n\n按政策，物流超过 72 小时没有更新可以申请催件，催件需要人工客服联系快递公司处理。已为您生成模拟工单：**TKT-DEMO-00044**，等待人工处理。\n\n另外提醒：该订单目前还未签收，签收后才能办理售后。",
+      "latency_ms": 6695
+     }
+    ]
+   },
+   {
+    "id": "d05",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0021"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 1,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4265,
+      "output_tokens": 213,
+      "tokens_complete": true,
+      "answer": "可以，还在期限内：\n\n- 订单 ORD-DEMO-0021（迅充 车载支架，¥89，实付 ¥97），签收日期 2026-10-27\n- 七天无理由退货截止：**2026-11-03 24:00 前**（今天），该商品支持七天无理由\n- 质量问题退货同样截止今天；质量问题换货截止 2026-11-11\n\n想确认两点：\n1. 您退货是因为不想要了（无理由），还是商品有质量问题？\n2. 商品和包装是否完好、配件赠品齐全、有没有拆封使用？\n\n另外提醒：无理由退货的寄回运费需由买家承担（有运费险除外）。",
+      "latency_ms": 4014
+     }
+    ]
+   },
+   {
+    "id": "d06",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0023"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4343,
+      "output_tokens": 168,
+      "tokens_complete": true,
+      "answer": "很抱歉，这单已经超过七天无理由退货期限了：\n\n- 签收日期：2026-10-26\n- 七天无理由退货截止：2026-11-02 24:00（已过期，今天是 11-03）\n\n所以现在无法按无理由退货办理。\n\n如果商品存在质量问题，质量问题换货期限到 2026-11-10 24:00 前，还在期限内。请问商品是有质量问题吗？如果有，需要人工审核，麻烦准备照片或视频。",
+      "latency_ms": 3758
+     }
+    ]
+   },
+   {
+    "id": "d07",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "ORDER",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0002"
+        },
+        "status": "tool_failed",
+        "error_code": "NOT_FOUND",
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3924,
+      "output_tokens": 80,
+      "tokens_complete": true,
+      "answer": "没查到：当前登录账号下没有订单 ORD-DEMO-0002。请确认订单号是否正确，或提供您账号下的其他订单号。",
+      "latency_ms": 3616
+     }
+    ]
+   },
+   {
+    "id": "d08",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "transfer_to_human"
+    ],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "HUMAN",
+      "route": "human",
+      "stop_reason": null,
+      "steps": [
+       {
+        "step": 0,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "USER_REQUEST"
+        },
+        "status": "ok",
+        "via": "local",
+        "error_code": null,
+        "latency_ms": 0
+       }
+      ],
+      "llm_calls": 2,
+      "input_tokens": 416,
+      "output_tokens": 5,
+      "tokens_complete": true,
+      "answer": "已为您生成模拟人工工单 TKT-DEMO-00045，人工客服会在服务时间内处理（演示流程）。",
+      "latency_ms": 1509
+     }
+    ]
+   },
+   {
+    "id": "d09",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "LOGISTICS",
+      "route": "clarify",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 2,
+      "input_tokens": 410,
+      "output_tokens": 5,
+      "tokens_complete": true,
+      "answer": "请问您要咨询哪一笔订单？您最近的订单有：\n- ORD-DEMO-0001（待付款，回响 Home 智能音箱）\n- ORD-DEMO-0005（待发货，暖屋 迷你电饭煲 2L）\n- ORD-DEMO-0009（已发货，迅充 65W 氮化镓充电器、回响 Mini 蓝牙音箱）\n- ORD-DEMO-0033（退款中，壳语 液态硅胶手机壳）\n- ORD-DEMO-0017（已签收，声屿 定制刻字版 Air3）",
+      "latency_ms": 1829
+     }
+    ]
+   },
+   {
+    "id": "d10",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "track_shipment"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "ORDER",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0009"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4108,
+      "output_tokens": 203,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0009 详情：\n\n- 状态：已发货（尚未签收）\n- 商品：\n  - 迅充 65W 氮化镓充电器 ×1，¥129.00\n  - 回响 Mini 蓝牙音箱 ×1，¥159.00\n- 商品金额：¥288.00，运费 ¥0.00，实付 ¥288.00\n- 下单时间：2026-11-01 11:00\n- 付款时间：2026-11-01 11:05\n- 发货时间：2026-11-02 11:00\n- 签收时间：暂无\n\n需要我帮您查一下物流进度吗？",
+      "latency_ms": 4092
+     },
+     {
+      "intent": "LOGISTICS",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0009"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4557,
+      "output_tokens": 176,
+      "tokens_complete": true,
+      "answer": "物流信息（订单 ORD-DEMO-0009）：\n\n- 快递公司：顺丰演示快递\n- 运单号：SFX-DEMO-26273529\n- 当前状态：运输中，未出现超过 72 小时的停滞\n- 最新轨迹：2026-11-03 04:00 快件到达演示转运中心A\n- 历史轨迹：2026-11-02 11:00 商家已发货，快递已揽收（演示仓）\n\n包裹正在运输途中，暂无异常。需要我帮您做其他处理吗？",
+      "latency_ms": 3682
+     }
+    ]
+   },
+   {
+    "id": "d11",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0019"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4236,
+      "output_tokens": 187,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0019（声屿 Air3 降噪耳机，¥499）于 2026-10-29 签收，目前仍在售后期限内：\n\n- 七天无理由退货：截止 2026-11-05 24:00 前，该商品支持七天无理由\n- 质量问题退货：截止 2026-11-05 24:00 前\n- 质量问题换货：截止 2026-11-13 24:00 前\n\n请问您想退货的原因是什么？是不想要了（无理由），还是商品有质量问题？",
+      "latency_ms": 3985
+     }
+    ]
+   },
+   {
+    "id": "d12",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_policy",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "COMPLAINT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "COMPLAINT",
+         "summary": "用户投诉收到的商品与页面描述完全不符，情绪激动，要求投诉。用户未提供订单号，需人工跟进核实。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 24,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "投诉处理时效"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 753,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 6164,
+      "output_tokens": 254,
+      "tokens_complete": true,
+      "answer": "已为您登记投诉工单，工单号：**TKT-DEMO-00046**（模拟工单，等待人工处理）。\n\n处理时效：人工客服会在 **24小时内首次响应，48小时内给出处理方案**；复杂问题可能延长，延长时会提前告知。人工客服服务时间为每天 9:00–21:00。\n\n为了帮人工客服更快核实，方便的话请提供一下订单号，以及具体哪些地方和页面描述不一致（比如型号、颜色、数量、规格等）。",
+      "latency_ms": 5126
+     }
+    ]
+   },
+   {
+    "id": "d13",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": null,
+      "route": "blocked",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens_complete": true,
+      "answer": "抱歉，您的请求包含不安全的内容，无法处理。如需帮助，可以换个方式描述您的问题。",
+      "latency_ms": 0
+     }
+    ]
+   },
+   {
+    "id": "d14",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": null,
+      "route": "blocked",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 1,
+      "input_tokens": 197,
+      "output_tokens": 3,
+      "tokens_complete": true,
+      "answer": "抱歉，您的请求包含不安全的内容，无法处理。如需帮助，可以换个方式描述您的问题。",
+      "latency_ms": 589
+     }
+    ]
+   },
+   {
+    "id": "d15",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "CHAT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [],
+      "llm_calls": 3,
+      "input_tokens": 2065,
+      "output_tokens": 29,
+      "tokens_complete": true,
+      "answer": "你好！我是电商客服助手，可以帮你查商品信息、订单物流和售后政策。请问有什么可以帮你的？",
+      "latency_ms": 2263
+     }
+    ]
+   },
+   {
+    "id": "s01",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0017"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "定制商品 七天无理由退货 不支持"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 871,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 6842,
+      "output_tokens": 244,
+      "tokens_complete": true,
+      "answer": "这单的情况是：\n\n- 商品：声屿 定制刻字版 Air3（¥549），已于 2026-11-01 签收\n- 该商品是**定制刻字商品**，按政策属于“只支持质量问题退换”的商品，**不支持七天无理由退货**\n\n所以“不想要了”这种无理由退货，这单办不了。\n\n如果商品存在质量问题，签收后 15 天内（质量问题换货截止 2026-11-16 24:00 前）可以按质量问题申请退换，但需要人工审核，并请您准备照片或视频。\n\n请问商品是有质量问题吗？还是其他情况？",
+      "latency_ms": 5425
+     }
+    ]
+   },
+   {
+    "id": "s02",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0019"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "质量问题退货换货期限 退款时效"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 821,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4642,
+      "output_tokens": 209,
+      "tokens_complete": true,
+      "answer": "您的订单 ORD-DEMO-0019（声屿 Air3 降噪耳机，¥499）签收于 2026-10-29，目前仍在质量问题的退换期限内（截止 2026-11-05 24:00），可以申请退货或换货。\n\n质量问题需要人工审核，麻烦您先确认两点：\n1. 杂音是使用中一直存在，还是特定场景（如蓝牙连接、降噪模式）才出现？\n2. 能否提供照片或视频作为凭证？\n\n确认后我帮您生成工单转人工审核。",
+      "latency_ms": 4658
+     }
+    ]
+   },
+   {
+    "id": "s03",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy",
+     "track_shipment",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "COMPLAINT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "投诉处理时效 物流异常"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 827,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "COMPLAINT",
+         "summary": "用户投诉物流停滞：订单ORD-DEMO-0013（顺丰演示快递，运单SFX-DEMO-57252561）自2026-10-30 04:00到达演示转运中心A后无更新，已停滞超72小时，用户要求投诉并催件。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 21,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 7457,
+      "output_tokens": 419,
+      "tokens_complete": true,
+      "answer": "非常抱歉，让您等了这么久，我理解您的心情。\n\n已核实：订单 ORD-DEMO-0013（顺丰演示快递，运单 SFX-DEMO-57252561）最新轨迹停留在 2026-10-30 04:00「到达演示转运中心A」，已超过 72 小时无更新，属于物流停滞，可以申请催件。\n\n已为您生成投诉工单：**TKT-DEMO-00047**（模拟工单，等待人工处理）。人工客服会在 24 小时内首次响应，48 小时内给出处理方案；如问题复杂需要延长，会提前告知您。\n\n另外，该订单目前还未签收，签收后如需退换货可再联系我们。请问还有其他需要补充说明的情况吗？",
+      "latency_ms": 6693
+     }
+    ]
+   },
+   {
+    "id": "s04",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0016"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4353,
+      "output_tokens": 193,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0016 于 2026-11-02 签收，七天无理由退货截止到 2026-11-09 24:00，目前仍在期限内；两件商品（电动剃须刀、65W 充电器）都支持七天无理由退货。\n\n不过还需要确认两点：\n1. 商品和包装是否完好、配件赠品是否齐全？\n2. 有没有拆封使用过？（剃须刀属于个护类，拆封后不支持无理由退货）\n\n如果都完好未拆封，就可以申请无理由退货，寄回运费需要您承担（有运费险除外）。",
+      "latency_ms": 3610
+     }
+    ]
+   },
+   {
+    "id": "s05",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0025"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "质量问题换货期限 退换货政策"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 936,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 4683,
+      "output_tokens": 276,
+      "tokens_complete": true,
+      "answer": "查到了：订单 ORD-DEMO-0025（迅充 65W 氮化镓充电器），签收日期 2026-10-22。\n\n- 七天无理由退货、质量问题退货：均已过期限（截止 10-29）\n- **质量问题换货：仍在期限内**（截止 2026-11-06 24:00），签收后 15 天内非人为质量问题可换同款同规格新品，寄回和寄出运费由商家承担\n\n质量问题需要人工审核，我这边不能直接认定。想先确认两点：\n1. 具体是什么故障现象（比如无法充电、异响、发烫等）？\n2. 有没有人为损坏，比如摔过、进水？\n\n另外方便的话请准备故障照片或视频，人工审核时会用到。确认后我就帮你生成工单。",
+      "latency_ms": 5404
+     }
+    ]
+   }
+  ]
+ },
+ "ondemand": {
+  "summary": {
+   "通过": "20/20",
+   "技能相关对话通过": "9/9",
+   "其他对话通过": "11/11",
+   "load_skill调用率_技能相关": "9/9",
+   "load_skill调用率_其他": "0/11",
+   "需要工具的对话里调用了业务工具": "14/14",
+   "每轮平均token_全部轮": 3808,
+   "每轮平均token_进入循环的轮": 4643,
+   "每轮平均输入token_进入循环的轮": 4415,
+   "token总计": 79968,
+   "token记录完整": "21/21",
+   "每轮平均模型调用_进入循环的轮": 4.35,
+   "延迟中位数ms_进入循环的轮": 4395
+  },
+  "rows": [
+   {
+    "id": "d01",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_products"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "PRODUCT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_products",
+        "args": {
+         "query": "声屿Air3 降噪 续航时间"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 1287,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3310,
+      "output_tokens": 106,
+      "tokens_complete": true,
+      "answer": "声屿 Air3 开启主动降噪时，耳机单次续航约 5 小时；关闭降噪约 6 小时；配合充电盒总续航约 30 小时。充电 10 分钟可听歌约 2 小时。",
+      "latency_ms": 4395
+     }
+    ]
+   },
+   {
+    "id": "d02",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "POLICY",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "定制刻字商品 七天无理由退货"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 1039,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3196,
+      "output_tokens": 99,
+      "tokens_complete": true,
+      "answer": "不可以。定制商品（如刻字、定制图案）属于七天无理由退货不适用的商品，不支持七天无理由退货。\n\n不过如果商品存在质量问题，仍可按质量问题政策处理退换。需要我帮你查具体订单吗？",
+      "latency_ms": 4615
+     }
+    ]
+   },
+   {
+    "id": "d03",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "POLICY",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "search_policy",
+        "args": {
+         "query": "退款到账时效 银行卡"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 813,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3099,
+      "output_tokens": 142,
+      "tokens_complete": true,
+      "answer": "退款审核通过后，会按原支付方式退回：\n\n- **银行卡**：一般 **1–7 个工作日**到账，具体以银行或支付渠道为准\n- 余额支付：即时到账\n- 第三方支付：一般 1–7 个工作日\n\n另外，商家收到退货后会在 48 小时内完成检查和审核；未发货订单申请退款，24 小时内审核。审核通过后才开始计算到账时间。",
+      "latency_ms": 4285
+     }
+    ]
+   },
+   {
+    "id": "d04",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order",
+     "track_shipment",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "LOGISTICS",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "LOGISTICS_ISSUE",
+         "summary": "订单ORD-DEMO-0013（顺丰演示快递 SFX-DEMO-57252561）物流停滞超72小时，最新轨迹为10-30 04:00到达演示转运中心A，用户询问原因，需核实并催件。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 24,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 5446,
+      "output_tokens": 419,
+      "tokens_complete": true,
+      "answer": "已为您生成人工工单，工单号：**TKT-DEMO-00048**，状态为等待人工处理。人工客服会向快递方核实停滞原因并催件，请留意后续联系。\n\n另外提醒：该订单尚未签收，签收后才会开始计算退换货期限。",
+      "latency_ms": 5419
+     }
+    ]
+   },
+   {
+    "id": "d05",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "return_exchange"
+    ],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "return_exchange"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0021"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3811,
+      "output_tokens": 207,
+      "tokens_complete": true,
+      "answer": "ORD-DEMO-0021（迅充 车载支架，¥89）已于 2026-10-27 签收，七天无理由退货截止到 **2026-11-03 24:00 前**，目前仍在期限内，该商品也支持七天无理由退货。\n\n想确认两点：\n1. 您退货是因为不想要了（无理由），还是商品有质量问题？\n2. 商品和包装是否完好、配件赠品是否齐全、有没有拆封使用？\n\n另外提醒：无理由退货的寄回运费需由买家承担（有运费险除外）。",
+      "latency_ms": 3534
+     }
+    ]
+   },
+   {
+    "id": "d06",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "return_exchange"
+    ],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "return_exchange"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0023"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3900,
+      "output_tokens": 232,
+      "tokens_complete": true,
+      "answer": "这单的情况是：\n\n- 签收日期：2026-10-26\n- 七天无理由退货截止：2026-11-02 24:00，**已过期**（今天是 11-03）\n- 质量问题退货截止：2026-11-02 24:00，也已过期\n- 质量问题换货截止：2026-11-10 24:00，仍在期限内\n\n所以这单**已经不能申请七天无理由退货**了。\n\n如果商品存在质量问题，目前还可以在 11-10 前申请换货（质量问题需要人工审核，需准备照片或视频）。请问商品有质量问题吗？",
+      "latency_ms": 3846
+     }
+    ]
+   },
+   {
+    "id": "d07",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "ORDER",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0002"
+        },
+        "status": "tool_failed",
+        "error_code": "NOT_FOUND",
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 2930,
+      "output_tokens": 88,
+      "tokens_complete": true,
+      "answer": "没查到：当前登录账号下没有订单 ORD-DEMO-0002。请确认订单号是否正确，或该订单是否属于其他账号。需要的话，我可以帮你列出最近的订单。",
+      "latency_ms": 3115
+     }
+    ]
+   },
+   {
+    "id": "d08",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "transfer_to_human"
+    ],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "HUMAN",
+      "route": "human",
+      "stop_reason": null,
+      "steps": [
+       {
+        "step": 0,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "USER_REQUEST"
+        },
+        "status": "ok",
+        "via": "local",
+        "error_code": null,
+        "latency_ms": 0
+       }
+      ],
+      "llm_calls": 2,
+      "input_tokens": 416,
+      "output_tokens": 5,
+      "tokens_complete": true,
+      "answer": "已为您生成模拟人工工单 TKT-DEMO-00049，人工客服会在服务时间内处理（演示流程）。",
+      "latency_ms": 1898
+     }
+    ]
+   },
+   {
+    "id": "d09",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "LOGISTICS",
+      "route": "clarify",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 2,
+      "input_tokens": 410,
+      "output_tokens": 5,
+      "tokens_complete": true,
+      "answer": "请问您要咨询哪一笔订单？您最近的订单有：\n- ORD-DEMO-0001（待付款，回响 Home 智能音箱）\n- ORD-DEMO-0005（待发货，暖屋 迷你电饭煲 2L）\n- ORD-DEMO-0009（已发货，迅充 65W 氮化镓充电器、回响 Mini 蓝牙音箱）\n- ORD-DEMO-0033（退款中，壳语 液态硅胶手机壳）\n- ORD-DEMO-0017（已签收，声屿 定制刻字版 Air3）",
+      "latency_ms": 1959
+     }
+    ]
+   },
+   {
+    "id": "d10",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [
+     "track_shipment"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "ORDER",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0009"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3114,
+      "output_tokens": 217,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0009 详情：\n\n- 状态：已发货（尚未签收）\n- 商品：\n  - 迅充 65W 氮化镓充电器 ×1，¥129.00\n  - 回响 Mini 蓝牙音箱 ×1，¥159.00\n- 商品金额：¥288.00，运费 ¥0.00，实付 ¥288.00\n- 下单时间：2026-11-01 11:00\n- 付款时间：2026-11-01 11:05\n- 发货时间：2026-11-02 11:00\n- 签收时间：暂无\n\n由于还没有签收，退换货期限要等签收后才能确定。需要我帮你查物流轨迹吗？",
+      "latency_ms": 3565
+     },
+     {
+      "intent": "LOGISTICS",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0009"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3591,
+      "output_tokens": 163,
+      "tokens_complete": true,
+      "answer": "物流信息（顺丰演示快递，运单号 SFX-DEMO-26273529）：\n\n- 当前状态：运输中，未出现超过 72 小时的停滞\n- 最新轨迹：2026-11-03 04:00 快件到达演示转运中心A\n- 历史轨迹：2026-11-02 11:00 商家已发货，快递已揽收（演示仓）\n\n包裹正在运输途中，暂时还没有派送信息。需要我帮你催件或转人工跟进吗？",
+      "latency_ms": 3501
+     }
+    ]
+   },
+   {
+    "id": "d11",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "return_exchange"
+    ],
+    "business_tools": [
+     "get_order"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "return_exchange"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0019"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 4,
+      "input_tokens": 3781,
+      "output_tokens": 239,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0019（声屿 Air3 降噪耳机，¥499）于 2026-10-29 签收，目前仍在售后期限内：\n\n- 七天无理由退货：截止 2026-11-05 24:00 前，仍在期限内\n- 质量问题退货：截止 2026-11-05 24:00 前\n- 质量问题换货：截止 2026-11-13 24:00 前\n\n想确认能否办理，麻烦您告诉我两点：\n1. 退货原因是不想要了（无理由），还是商品有质量问题？\n2. 如果是无理由退货，商品和包装是否完好、配件赠品是否齐全、有没有拆封使用？",
+      "latency_ms": 4100
+     }
+    ]
+   },
+   {
+    "id": "d12",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "complaint"
+    ],
+    "business_tools": [
+     "search_policy",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "COMPLAINT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "complaint"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "COMPLAINT",
+         "summary": "用户投诉收到的商品与页面描述完全不符，情绪激动，要求投诉。用户未提供订单号，需人工跟进核实。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 15,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "投诉处理时效"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 1018,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 5146,
+      "output_tokens": 296,
+      "tokens_complete": true,
+      "answer": "非常抱歉给您带来这样的体验，我理解您的心情。我已经为您提交了投诉工单：\n\n- 工单号：**TKT-DEMO-00050**（等待人工客服处理）\n- 处理时效：人工客服会在 **24小时内首次响应，48小时内给出处理方案**；如果问题复杂需要延长，会提前告知您。人工客服服务时间为每天 9:00–21:00。\n\n为了让人工客服更快核实，方便的话请提供一下订单号（格式如 ORD-DEMO-0001），以及收到的商品与页面描述具体哪里不一致。您也可以直接告诉我，我帮您补充到工单里。",
+      "latency_ms": 5937
+     }
+    ]
+   },
+   {
+    "id": "d13",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": null,
+      "route": "blocked",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens_complete": true,
+      "answer": "抱歉，您的请求包含不安全的内容，无法处理。如需帮助，可以换个方式描述您的问题。",
+      "latency_ms": 0
+     }
+    ]
+   },
+   {
+    "id": "d14",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": null,
+      "route": "blocked",
+      "stop_reason": null,
+      "steps": [],
+      "llm_calls": 1,
+      "input_tokens": 197,
+      "output_tokens": 3,
+      "tokens_complete": true,
+      "answer": "抱歉，您的请求包含不安全的内容，无法处理。如需帮助，可以换个方式描述您的问题。",
+      "latency_ms": 785
+     }
+    ]
+   },
+   {
+    "id": "d15",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [],
+    "business_tools": [],
+    "needs_tool": false,
+    "turns": [
+     {
+      "intent": "CHAT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [],
+      "llm_calls": 3,
+      "input_tokens": 1568,
+      "output_tokens": 30,
+      "tokens_complete": true,
+      "answer": "你好！我是电商客服助手，可以帮你查商品信息、售后政策、订单和物流。请问有什么需要帮忙的？",
+      "latency_ms": 2620
+     }
+    ]
+   },
+   {
+    "id": "s01",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "return_exchange"
+    ],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "return_exchange"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0017"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "定制商品 七天无理由退货 不支持"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 873,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 6457,
+      "output_tokens": 337,
+      "tokens_complete": true,
+      "answer": "这单情况有点特殊，先跟您说明：\n\n**订单 ORD-DEMO-0017**\n- 商品：声屿 定制刻字版 Air3 ×1，实付 ¥549.00\n- 签收日期：2026-11-01（七天无理由期限到 2026-11-08 24:00，仍在期限内）\n\n不过，这件是**定制刻字商品**，按政策属于“只支持质量问题退换的商品”，**不支持七天无理由退货**。所以“不想要了”这个理由，目前无法办理退货。\n\n想确认一下：**商品本身有没有出现质量问题**（比如无法开机、杂音、连接异常等）？如果有，质量问题退货期限到 2026-11-08 24:00，换货期限到 2026-11-16 24:00，可以按质量问题申请，但需要人工审核，并请您准备照片或视频。",
+      "latency_ms": 5866
+     }
+    ]
+   },
+   {
+    "id": "s02",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "return_exchange"
+    ],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "return_exchange"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0019"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "质量问题退货 需要提供凭证 审核 退款时效"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 834,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 6347,
+      "output_tokens": 266,
+      "tokens_complete": true,
+      "answer": "您的订单 ORD-DEMO-0019（声屿 Air3 降噪耳机，¥499）签收于 2026-10-29，目前仍在**质量问题退货**期限内（截止 2026-11-05 24:00 前），可以申请。\n\n不过质量问题需要人工审核，我这边不能直接认定。想先确认两点：\n1. 杂音是开机就有，还是特定场景（如降噪模式、蓝牙连接）才出现？\n2. 您方便提供照片或视频作为凭证吗？\n\n确认后我会为您生成人工审核工单。",
+      "latency_ms": 5953
+     }
+    ]
+   },
+   {
+    "id": "s03",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "complaint"
+    ],
+    "business_tools": [
+     "get_order",
+     "search_policy",
+     "track_shipment",
+     "transfer_to_human"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "COMPLAINT",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "complaint"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "track_shipment",
+        "args": {
+         "order_id": "ORD-DEMO-0013"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "transfer_to_human",
+        "args": {
+         "reason_code": "COMPLAINT",
+         "summary": "用户投诉订单ORD-DEMO-0013物流停滞：顺丰演示快递运单SFX-DEMO-57252561，最新轨迹为2026-10-30 04:00到达演示转运中心A，已停滞超72小时，用户要求投诉快递。"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 17,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "投诉处理时效 物流停滞"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 788,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 6286,
+      "output_tokens": 428,
+      "tokens_complete": true,
+      "answer": "非常抱歉让您久等了，物流停滞确实很影响体验，我理解您的不满。\n\n已核实订单 ORD-DEMO-0013（声屿 Pro 头戴式降噪耳机）：\n- 快递：顺丰演示快递，运单号 SFX-DEMO-57252561\n- 最新轨迹：2026-10-30 04:00 到达演示转运中心A，之后无更新，已超过72小时，属于物流停滞，可申请催件\n\n已为您提交投诉工单，工单号：**TKT-DEMO-00051**。人工客服会在24小时内首次响应、48小时内给出处理方案；如问题复杂需延长，会提前告知您。\n\n请问您还需要我帮您做其他处理吗？",
+      "latency_ms": 6684
+     }
+    ]
+   },
+   {
+    "id": "s04",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "return_exchange"
+    ],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "return_exchange"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0016"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "七天无理由退货 商品完好 拆封 个护 运费 退款时效"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 1063,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 6591,
+      "output_tokens": 286,
+      "tokens_complete": true,
+      "answer": "订单 ORD-DEMO-0016 于 2026-11-02 签收，七天无理由退货截止到 2026-11-09 24:00，目前仍在期限内；两件商品（电动剃须刀、65W 充电器）都支持七天无理由退货。\n\n不过，能否退货还要看商品状态，想先确认两点：\n1. 商品和包装是否完好，配件、赠品是否齐全？\n2. 电动剃须刀是否已经拆封使用？它属于个护类，拆封后可能不支持无理由退货。\n\n另外，无理由退货的寄回运费需要由您承担；如果购买了运费险，则按运费险理赔。",
+      "latency_ms": 5370
+     }
+    ]
+   },
+   {
+    "id": "s05",
+    "pass": true,
+    "fails": [],
+    "loaded_skills": [
+     "return_exchange"
+    ],
+    "business_tools": [
+     "get_order",
+     "search_policy"
+    ],
+    "needs_tool": true,
+    "turns": [
+     {
+      "intent": "RETURN_EXCHANGE",
+      "route": "agent",
+      "stop_reason": "answered",
+      "steps": [
+       {
+        "step": 1,
+        "tool": "load_skill",
+        "args": {
+         "name": "return_exchange"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 1,
+        "tool": "get_order",
+        "args": {
+         "order_id": "ORD-DEMO-0025"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 0,
+        "via": "local"
+       },
+       {
+        "step": 2,
+        "tool": "search_policy",
+        "args": {
+         "query": "质量问题换货 期限 流程 运费"
+        },
+        "status": "ok",
+        "error_code": null,
+        "latency_ms": 985,
+        "via": "local"
+       }
+      ],
+      "llm_calls": 5,
+      "input_tokens": 6477,
+      "output_tokens": 327,
+      "tokens_complete": true,
+      "answer": "已查到订单 ORD-DEMO-0025（迅充 65W 氮化镓充电器，¥129，2026-10-22 签收）：\n\n- 七天无理由退货：已过（截止 10-29）\n- 质量问题退货：已过（截止 10-29）\n- **质量问题换货：仍在期限内（截止 2026-11-06 24:00）**\n\n按政策，签收后 15 天内出现非人为质量问题，可以申请换同款同规格新品，寄回和寄出的运费都由商家承担。\n\n质量问题需要人工审核，我这边不能直接认定。想先确认两点：\n1. 具体是什么故障现象？\n2. 是否有人为损坏（摔过、进水、私自拆修等）？\n\n另外请准备好故障的照片或视频。确认后我就帮你生成工单转人工审核。",
+      "latency_ms": 5890
+     }
+    ]
+   }
+  ]
+ }
+}

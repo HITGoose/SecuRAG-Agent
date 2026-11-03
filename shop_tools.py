@@ -59,6 +59,11 @@ TOOL_SCHEMAS = [
 SCHEMA_BY_NAME = {s["function"]["name"]: s["function"]["parameters"] for s in TOOL_SCHEMAS}
 
 
+def register_schema(schema: dict) -> None:
+    """登记额外工具（如阶段3 的 load_skill）的参数 schema，让 prepare_args 也能校验它。"""
+    SCHEMA_BY_NAME[schema["function"]["name"]] = schema["function"]["parameters"]
+
+
 def prepare_args(name: str, args) -> tuple:
     """
     校验 + 规范化参数，返回 (规范化后的参数, 错误信息)。
