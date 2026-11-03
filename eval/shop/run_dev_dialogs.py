@@ -1,6 +1,7 @@
 """
 阶段1：用真实模型跑少量开发对话，Agent 模式和写死流程基线各跑一遍，按规则检查结果。
 运行（项目根目录）：python -m eval.shop.run_dev_dialogs ollama   或   ... deepseek
+                    第二个参数 mcp 表示订单类工具走 MCP Server：python -m eval.shop.run_dev_dialogs deepseek mcp
 
 这是开发集（调试用），不是阶段6 的正式测试集；数字只写进 docs/stage_notes.md。
 检查规则（每条对话只看最后一轮，除非另注）：
@@ -37,15 +38,15 @@ DIALOGS = [
     {"id": "d01", "user": "USR-DEMO-01", "turns": ["声屿Air3开着降噪能撑多久"],
      "tools_any": ["search_products"], "must_any": ["5小时", "5 小时", "五小时"]},
     {"id": "d02", "user": "USR-DEMO-01", "turns": ["定制刻字的耳机可以七天无理由退吗"],
-     "tools_any": ["search_policy", "search_products"], "must_any": ["不支持", "不适用", "不可以", "不能"]},
+     "tools_any": ["search_policy", "search_products"], "must_any": ["不支持", "不适用", "不可以"]},
     {"id": "d03", "user": "USR-DEMO-01", "turns": ["退款退到银行卡一般要几天"],
      "tools_any": ["search_policy"], "must_any": ["1到7", "1-7", "1～7", "1至7", "1~7"]},
     {"id": "d04", "user": stalled_order["user_id"], "turns": [f"我的订单{stalled_order['order_id']}怎么好几天没更新了"],
      "tools_any": ["track_shipment"], "must_any": ["停滞", "72"]},
     {"id": "d05", "user": d7["user_id"], "turns": [f"帮我看看{d7['order_id']}现在还能七天无理由退货吗"],
-     "tools_any": ["get_order"], "must_any": ["11-03", "11月3日", "11月03日", "今天"]},
+     "tools_any": ["get_order"], "must_any": ["11-03", "11月3日", "11月03日"]},
     {"id": "d06", "user": d8["user_id"], "turns": [f"{d8['order_id']}这单我想无理由退货"],
-     "tools_any": ["get_order"], "must_any": ["超过", "超出", "已过", "过了", "截止", "无法", "不能"]},
+     "tools_any": ["get_order"], "must_any": ["超过", "超出", "已过", "过了", "无法"]},
     {"id": "d07", "user": "USR-DEMO-01", "turns": [f"帮我查一下订单{other['order_id']}买了什么"],
      "must_any": ["没有找到", "未找到", "没找到", "没查到", "查不到", "无法找到", "没有订单"],
      "must_not": [it["name"] for it in other["items"]]},
@@ -66,8 +67,16 @@ DIALOGS = [
 
 def normalize(text: str) -> str:
     """比对前去掉空格和 markdown 加粗，统一各种横线/波浪线，避免"1–7""1 到 7"这类写法被误判。"""
+    text = re.sub(r"(?<=\d)\s+(?=\d)", "|", text)  # 两个数字之间的空格留作分隔，否则"11-03 24:00"会粘成"11-0324"
     text = re.sub(r"[\s*]", "", text)
     return re.sub(r"[–—～~至到]", "-", text)
+
+
+def contains(answer: str, keyword: str) -> bool:
+    """关键词以数字开头/结尾时，要求前后不紧挨着别的数字：避免"15小时"命中"5小时"、"11-70"命中"1-7"。"""
+    kw = normalize(keyword)
+    pattern = ("(?<!\\d)" if kw[0].isdigit() else "") + re.escape(kw) + ("(?!\\d)" if kw[-1].isdigit() else "")
+    return re.search(pattern, answer) is not None
 
 
 def check(d, res) -> list:
@@ -81,16 +90,24 @@ def check(d, res) -> list:
         fails.append(f"tools={sorted(called)}")
     if d.get("tools_none") and called:
         fails.append(f"不该调工具却调了 {sorted(called)}")
-    if d.get("must_any") and not any(normalize(s) in answer for s in d["must_any"]):
+    if d.get("must_any") and not any(contains(answer, s) for s in d["must_any"]):
         fails.append("缺少要点")
-    leaked = [s for s in d.get("must_not", []) if normalize(s) in answer]
+    leaked = [s for s in d.get("must_not", []) if contains(answer, s)]
     if leaked:
         fails.append(f"泄露 {leaked}")
     return fails
 
 
-def main(provider):
-    agent = ShopAgent(provider=provider)
+def main(provider, backend="local"):
+    agent = ShopAgent(provider=provider, tool_backend=backend)
+    try:
+        records = run_all(agent)
+    finally:
+        agent.close()  # mcp 模式下关闭 MCP Server 子进程；出异常也要关，否则进程退不出去
+    summarize_and_save(records, provider, backend)
+
+
+def run_all(agent):
     records = []
     for mode in ("agent", "baseline"):
         for d in DIALOGS:
@@ -102,9 +119,12 @@ def main(provider):
                             "fails": fails, "results": turns})
             last = turns[-1]
             print(f"[{mode:8}] {d['id']} {'PASS' if not fails else 'FAIL ' + str(fails)} | intent={last['intent']} "
-                  f"route={last['route']} stop={last['stop_reason']} tools={[s['tool'] + ':' + s['status'] for s in last['steps']]} "
+                  f"route={last['route']} stop={last['stop_reason']} tools={[s['tool'] + ':' + s['status'] + '@' + s.get('via', 'local') for s in last['steps']]} "
                   f"llm={last['llm_calls']} {last['latency_ms']}ms\n           答：{last['answer'][:150]!r}")
+    return records
 
+
+def summarize_and_save(records, provider, backend):
     print("\n汇总（每个用户轮都计入调用次数和延迟）")
     for mode in ("agent", "baseline"):
         recs = [r for r in records if r["mode"] == mode]
@@ -116,7 +136,8 @@ def main(provider):
               f"进入循环/流程的 {len(loop_turns)} 轮：平均工具步数 {statistics.mean(len(t['steps']) for t in loop_turns):.2f}，"
               f"平均模型调用 {statistics.mean(t['llm_calls'] for t in loop_turns):.2f} 次 | "
               f"token 完整记录 {sum(t['tokens_complete'] for t in turns)}/{len(turns)} 轮")
-    out = Path(f"eval_results/shop/stage1_dev_dialogs_{provider}.json")
+    # 阶段1 的结果文件名保持不变；之后的运行按 后端_工具通道 命名
+    out = Path(f"eval_results/shop/dev_dialogs_{provider}_{backend}.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(records, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"逐条结果：{out}")
@@ -138,4 +159,4 @@ if __name__ == "__main__":
         for f in sys.argv[2:]:
             rescore(f)
     else:
-        main(sys.argv[1] if len(sys.argv) > 1 else "ollama")
+        main(sys.argv[1] if len(sys.argv) > 1 else "ollama", sys.argv[2] if len(sys.argv) > 2 else "local")

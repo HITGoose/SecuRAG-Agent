@@ -9,12 +9,7 @@
 import re
 from dataclasses import dataclass
 
-import chromadb
-
 import config
-from build_shop_kb import collection_names, embedding_function
-from hybrid_retriever import HybridRetriever
-from reranker import Reranker
 from security_guard import redact_pii
 from shop_repository import ShopRepository
 
@@ -121,6 +116,12 @@ class ShopKnowledge:
     """商品、政策两个知识集合的检索：混合检索取 20 条候选 → CrossEncoder 重排取前几条。"""
 
     def __init__(self, embed_model: str = config.SHOP_EMBED_MODEL, rerank_model: str = config.SHOP_RERANK_MODEL):
+        # 检索相关的库放到这里才导入：MCP Server 只用订单类工具，启动时不用加载 chromadb 和模型
+        import chromadb
+        from build_shop_kb import collection_names, embedding_function
+        from hybrid_retriever import HybridRetriever
+        from reranker import Reranker
+
         client = chromadb.PersistentClient(path=config.SHOP_DB_PATH)
         ef = embedding_function(embed_model)
         prefix = "" if embed_model == "default" else config.SHOP_EMBED_QUERY_PREFIX
@@ -137,7 +138,8 @@ class ShopKnowledge:
 
 
 class ShopTools:
-    def __init__(self, repo: ShopRepository, knowledge: ShopKnowledge):
+    def __init__(self, repo: ShopRepository, knowledge: ShopKnowledge = None):
+        """knowledge 为 None 时只能用订单类工具（MCP Server 就是这样用的）。"""
         self.repo = repo
         self.knowledge = knowledge
         self.schemas = TOOL_SCHEMAS

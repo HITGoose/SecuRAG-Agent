@@ -6,6 +6,7 @@ v2 电商客服 Agent 的入口：安全层 → 意图识别 → （程序直接
     agent.login("s1", "USR-DEMO-01")          # 服务端把会话绑定到模拟用户；模型拿不到也改不了
     agent.handle("s1", "我的订单到哪了")        # 返回 dict：answer、intent、route、steps、llm_calls、latency_ms ...
     agent.handle("s1", "...", mode="baseline") # 写死流程基线：按意图查表调用固定工具
+    ShopAgent(tool_backend="mcp")              # 订单/物流/工单工具改为经 MCP Server 调用（阶段2）
 """
 import re
 import time
@@ -83,12 +84,31 @@ UNKNOWN_ANSWER = "抱歉，我没太明白您的问题。您是想咨询商品�
 
 class ShopAgent:
     def __init__(self, provider: str = "deepseek", embed_model: str = config.SHOP_EMBED_MODEL,
-                 rerank_model: str = config.SHOP_RERANK_MODEL):
+                 rerank_model: str = config.SHOP_RERANK_MODEL, tool_backend: str = "local"):
         self.llm = LLMGateway(provider)
         self.guard = SecurityGuard()  # 复用 v1：正则注入检测
-        self.repo = ShopRepository()
+        self.repo = ShopRepository()  # 只用来校验登录用户是否存在；订单数据都经工具读取
         self.tools = ShopTools(self.repo, ShopKnowledge(embed_model, rerank_model))
+        self.mcp = None
+        if tool_backend == "mcp":
+            from mcp_client import MCP_TOOLS, ShopMCPClient
+            self.mcp_tools = MCP_TOOLS
+            self.mcp = ShopMCPClient()
+            self.mcp.start()  # 启动 MCP Server 子进程，并核对它暴露的工具和本地 schema 一致
         self.sessions = {}  # session_id -> {"user_id", "history", "current_order"}
+
+    def close(self) -> None:
+        if self.mcp:
+            self.mcp.close()
+
+    def _exec(self, name: str, args: dict, ctx: ToolContext) -> dict:
+        """所有工具调用的唯一出口：订单类工具在 mcp 模式下走 MCP Server，其余在本进程执行。"""
+        if self.mcp and name in self.mcp_tools:
+            return self.mcp.call(name, args, ctx)
+        return self.tools.execute(name, args, ctx)
+
+    def _via(self, name: str) -> str:
+        return "mcp" if self.mcp and name in self.mcp_tools else "local"
 
     def login(self, session_id: str, user_id: str) -> None:
         """模拟登录：服务端把会话绑定到用户。真实系统里这一步来自鉴权，不来自对话内容。"""
@@ -126,19 +146,29 @@ class ShopAgent:
 
         # ---- 4. 程序直接处理的意图：HUMAN、缺订单号需澄清、UNKNOWN ----
         if intent == "HUMAN":
-            res = self.tools.execute("transfer_to_human", {"reason_code": "USER_REQUEST", "summary": safe_msg[:200]}, ctx)
+            try:
+                res = self._exec("transfer_to_human", {"reason_code": "USER_REQUEST", "summary": safe_msg[:200]}, ctx)
+            except Exception as e:  # 工单服务（或 MCP Server）不可用：如实说没建成，不捏造工单号
+                res = {"ok": False, "error": {"code": "TOOL_ERROR", "message": type(e).__name__}}
             out["steps"].append({"step": 0, "tool": "transfer_to_human", "args": {"reason_code": "USER_REQUEST"},
-                                 "status": "ok" if res["ok"] else "tool_failed", "error_code": None, "latency_ms": 0})
+                                 "status": "ok" if res["ok"] else "tool_failed", "via": self._via("transfer_to_human"),
+                                 "error_code": (res.get("error") or {}).get("code"), "latency_ms": 0})
             answer = (f"已为您生成模拟人工工单 {res['data']['工单号']}，人工客服会在服务时间内处理（演示流程）。"
                       if res["ok"] else "抱歉，转人工工单没有创建成功，请稍后再试。")
             return self._reply(out, session, safe_msg, answer, "human", start)
         if intent in NEEDS_ORDER and not session["current_order"]:
-            orders = self.repo.list_orders(session["user_id"])
+            try:  # 订单列表也经工具读取（mcp 模式下走 MCP Server），不直接读数据层
+                res = self._exec("get_order", {}, ctx)
+                orders = res["data"]["最近订单"] if res["ok"] else None
+            except Exception:
+                orders = None
+            if orders is None:
+                answer = "抱歉，暂时查不到您的订单列表，请直接告诉我订单号（如 ORD-DEMO-0001）。"
+                return self._reply(out, session, safe_msg, answer, "clarify", start)
             if len(orders) == 1:
                 session["current_order"] = orders[0]["order_id"]  # 只有一笔订单，不用问
             else:
-                listing = "\n".join(f"- {o['order_id']}（{o['status']}，{'、'.join(it['name'] for it in o['items'])}）"
-                                    for o in orders)
+                listing = "\n".join(f"- {o['order_id']}（{o['状态']}，{o['商品']}）" for o in orders)
                 answer = f"请问您要咨询哪一笔订单？您最近的订单有：\n{listing}" if orders else "您的账号下没有订单。"
                 return self._reply(out, session, safe_msg, answer, "clarify", start)
         if intent == "UNKNOWN":
@@ -158,10 +188,11 @@ class ShopAgent:
 
         loop = run_agent_loop(
             self.llm, messages, self.tools.schemas, prepare_args,
-            execute_tool=lambda name, args: self.tools.execute(name, args, ctx),  # 用户身份在这里绑定
+            execute_tool=lambda name, args: self._exec(name, args, ctx),  # 用户身份在这里绑定
             max_steps=config.MAX_STEPS, max_tool_calls=config.MAX_TOOL_CALLS,
             max_calls_per_response=config.MAX_CALLS_PER_RESPONSE, tool_timeout_s=config.TOOL_TIMEOUT_S)
-        out["steps"], out["stop_reason"] = loop.steps, loop.stop_reason
+        out["steps"] = [{**s, "via": self._via(s["tool"])} for s in loop.steps]
+        out["stop_reason"] = loop.stop_reason
         out["llm_calls"] += loop.llm_calls
         out["input_tokens"] += loop.input_tokens
         out["output_tokens"] += loop.output_tokens
@@ -201,11 +232,11 @@ class ShopAgent:
                 args = {"reason_code": "COMPLAINT", "summary": safe_msg[:200]}
             t = time.perf_counter()
             try:
-                res = self.tools.execute(name, args, ctx)
+                res = self._exec(name, args, ctx)
                 status = "ok" if res["ok"] else "tool_failed"
             except Exception as e:
                 res, status = {"ok": False, "error": {"code": "TOOL_ERROR", "message": type(e).__name__}}, "exception"
-            out["steps"].append({"step": i + 1, "tool": name, "args": args, "status": status,
+            out["steps"].append({"step": i + 1, "tool": name, "args": args, "status": status, "via": self._via(name),
                                  "error_code": (res.get("error") or {}).get("code"),
                                  "latency_ms": int((time.perf_counter() - t) * 1000)})
             data.append(f"[{name}] {res}")

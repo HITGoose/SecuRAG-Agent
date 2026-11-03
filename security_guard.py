@@ -1,5 +1,4 @@
 import re
-from presidio_analyzer import AnalyzerEngine
 
 
 def redact_pii(text: str) -> str:
@@ -23,6 +22,8 @@ class SecurityGuard:
         # 🚫 黑名单：任何包含这些意图的词都会被拦截
         # 这种基于规则的拦截叫 "Deterministic Guardrails" (确定性护栏)
         print("🛡️ 加载安全组件...")
+        # 用到时才导入：presidio 会连带加载 spaCy，导入要十几秒；只用 redact_pii 的进程（如 MCP Server）不需要它
+        from presidio_analyzer import AnalyzerEngine
         self.analyzer = AnalyzerEngine()
         self.injection_patterns = [
             r"ignore all previous instructions",
