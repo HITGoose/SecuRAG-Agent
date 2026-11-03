@@ -1,0 +1,38 @@
+{
+ "version": "orders-v1",
+ "seed": 20261103,
+ "simulation_now": "2026-11-03T12:00:00+08:00",
+ "note": "全部为虚构数据",
+ "users": [
+  {
+   "user_id": "USR-DEMO-01",
+   "nickname": "演示用户小林",
+   "phone": "演示手机号-01",
+   "address": "演示省演示市演示路1号（虚构）"
+  },
+  {
+   "user_id": "USR-DEMO-02",
+   "nickname": "演示用户阿青",
+   "phone": "演示手机号-02",
+   "address": "演示省演示市演示路2号（虚构）"
+  },
+  {
+   "user_id": "USR-DEMO-03",
+   "nickname": "演示用户大周",
+   "phone": "演示手机号-03",
+   "address": "演示省演示市演示路3号（虚构）"
+  },
+  {
+   "user_id": "USR-DEMO-04",
+   "nickname": "演示用户小满",
+   "phone": "演示手机号-04",
+   "address": "演示省演示市演示路4号（虚构）"
+  },
+  {
+   "user_id": "USR-DEMO-05",
+   "nickname": "演示用户老陈",
+   "phone": "演示手机号-05",
+   "address": "演示省演示市演示路5号（虚构）"
+  }
+ ]
+}

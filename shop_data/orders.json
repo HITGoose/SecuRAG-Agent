@@ -1,0 +1,868 @@
+{
+ "version": "orders-v1",
+ "seed": 20261103,
+ "simulation_now": "2026-11-03T12:00:00+08:00",
+ "note": "全部为虚构数据",
+ "orders": [
+  {
+   "order_id": "ORD-DEMO-0001",
+   "user_id": "USR-DEMO-01",
+   "status": "待付款",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-006",
+     "name": "回响 Home 智能音箱",
+     "qty": 1,
+     "unit_price_cents": 39900
+    }
+   ],
+   "goods_cents": 39900,
+   "shipping_cents": 0,
+   "total_cents": 39900,
+   "created_at": "2026-11-03T09:00:00+08:00",
+   "paid_at": null,
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0002",
+   "user_id": "USR-DEMO-02",
+   "status": "待付款",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-205",
+     "name": "净界 H13 替换滤网",
+     "qty": 2,
+     "unit_price_cents": 12900
+    }
+   ],
+   "goods_cents": 25800,
+   "shipping_cents": 0,
+   "total_cents": 25800,
+   "created_at": "2026-11-03T09:00:00+08:00",
+   "paid_at": null,
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0003",
+   "user_id": "USR-DEMO-03",
+   "status": "待付款",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-202",
+     "name": "暖屋 恒温调奶壶",
+     "qty": 1,
+     "unit_price_cents": 19900
+    }
+   ],
+   "goods_cents": 19900,
+   "shipping_cents": 0,
+   "total_cents": 19900,
+   "created_at": "2026-11-02T03:00:00+08:00",
+   "paid_at": null,
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0004",
+   "user_id": "USR-DEMO-04",
+   "status": "待发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-007",
+     "name": "声屿 Kids 儿童耳机",
+     "qty": 1,
+     "unit_price_cents": 12900
+    }
+   ],
+   "goods_cents": 12900,
+   "shipping_cents": 0,
+   "total_cents": 12900,
+   "created_at": "2026-11-03T08:00:00+08:00",
+   "paid_at": "2026-11-03T08:05:00+08:00",
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0005",
+   "user_id": "USR-DEMO-01",
+   "status": "待发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-206",
+     "name": "暖屋 迷你电饭煲 2L",
+     "qty": 2,
+     "unit_price_cents": 22900
+    }
+   ],
+   "goods_cents": 45800,
+   "shipping_cents": 0,
+   "total_cents": 45800,
+   "created_at": "2026-11-02T09:00:00+08:00",
+   "paid_at": "2026-11-02T09:05:00+08:00",
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0006",
+   "user_id": "USR-DEMO-02",
+   "status": "待发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-104",
+     "name": "迅充 10000mAh 磁吸充电宝",
+     "qty": 1,
+     "unit_price_cents": 15900
+    }
+   ],
+   "goods_cents": 15900,
+   "shipping_cents": 0,
+   "total_cents": 15900,
+   "created_at": "2026-11-02T06:00:00+08:00",
+   "paid_at": "2026-11-02T06:05:00+08:00",
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0007",
+   "user_id": "USR-DEMO-03",
+   "status": "待发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-008",
+     "name": "声屿 定制刻字版 Air3",
+     "qty": 2,
+     "unit_price_cents": 54900
+    },
+    {
+     "product_id": "PRD-DEMO-101",
+     "name": "迅充 65W 氮化镓充电器",
+     "qty": 1,
+     "unit_price_cents": 12900
+    }
+   ],
+   "goods_cents": 122700,
+   "shipping_cents": 0,
+   "total_cents": 122700,
+   "created_at": "2026-11-01T11:00:00+08:00",
+   "paid_at": "2026-11-01T11:05:00+08:00",
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0008",
+   "user_id": "USR-DEMO-04",
+   "status": "待发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-103",
+     "name": "迅充 双头编织数据线 1.5米",
+     "qty": 1,
+     "unit_price_cents": 3900
+    }
+   ],
+   "goods_cents": 3900,
+   "shipping_cents": 800,
+   "total_cents": 4700,
+   "created_at": "2026-11-01T03:00:00+08:00",
+   "paid_at": "2026-11-01T03:05:00+08:00",
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0009",
+   "user_id": "USR-DEMO-01",
+   "status": "已发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-101",
+     "name": "迅充 65W 氮化镓充电器",
+     "qty": 1,
+     "unit_price_cents": 12900
+    },
+    {
+     "product_id": "PRD-DEMO-005",
+     "name": "回响 Mini 蓝牙音箱",
+     "qty": 1,
+     "unit_price_cents": 15900
+    }
+   ],
+   "goods_cents": 28800,
+   "shipping_cents": 0,
+   "total_cents": 28800,
+   "created_at": "2026-11-01T11:00:00+08:00",
+   "paid_at": "2026-11-01T11:05:00+08:00",
+   "shipped_at": "2026-11-02T11:00:00+08:00",
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0010",
+   "user_id": "USR-DEMO-02",
+   "status": "已发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-102",
+     "name": "迅充 20W 快充头",
+     "qty": 1,
+     "unit_price_cents": 4900
+    }
+   ],
+   "goods_cents": 4900,
+   "shipping_cents": 800,
+   "total_cents": 5700,
+   "created_at": "2026-10-31T07:00:00+08:00",
+   "paid_at": "2026-10-31T07:05:00+08:00",
+   "shipped_at": "2026-11-01T07:00:00+08:00",
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0011",
+   "user_id": "USR-DEMO-03",
+   "status": "已发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-001",
+     "name": "声屿 Air3 降噪耳机",
+     "qty": 2,
+     "unit_price_cents": 49900
+    },
+    {
+     "product_id": "PRD-DEMO-206",
+     "name": "暖屋 迷你电饭煲 2L",
+     "qty": 1,
+     "unit_price_cents": 22900
+    }
+   ],
+   "goods_cents": 122700,
+   "shipping_cents": 0,
+   "total_cents": 122700,
+   "created_at": "2026-10-31T10:00:00+08:00",
+   "paid_at": "2026-10-31T10:05:00+08:00",
+   "shipped_at": "2026-11-01T10:00:00+08:00",
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0012",
+   "user_id": "USR-DEMO-04",
+   "status": "已发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-005",
+     "name": "回响 Mini 蓝牙音箱",
+     "qty": 2,
+     "unit_price_cents": 15900
+    },
+    {
+     "product_id": "PRD-DEMO-301",
+     "name": "洁齿 声波电动牙刷",
+     "qty": 1,
+     "unit_price_cents": 19900
+    }
+   ],
+   "goods_cents": 51700,
+   "shipping_cents": 0,
+   "total_cents": 51700,
+   "created_at": "2026-10-30T07:00:00+08:00",
+   "paid_at": "2026-10-30T07:05:00+08:00",
+   "shipped_at": "2026-10-31T07:00:00+08:00",
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0013",
+   "user_id": "USR-DEMO-01",
+   "status": "已发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-002",
+     "name": "声屿 Pro 头戴式降噪耳机",
+     "qty": 1,
+     "unit_price_cents": 129900
+    }
+   ],
+   "goods_cents": 129900,
+   "shipping_cents": 0,
+   "total_cents": 129900,
+   "created_at": "2026-10-28T10:00:00+08:00",
+   "paid_at": "2026-10-28T10:05:00+08:00",
+   "shipped_at": "2026-10-29T10:00:00+08:00",
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0014",
+   "user_id": "USR-DEMO-02",
+   "status": "已发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-105",
+     "name": "壳语 液态硅胶手机壳",
+     "qty": 1,
+     "unit_price_cents": 6900
+    }
+   ],
+   "goods_cents": 6900,
+   "shipping_cents": 800,
+   "total_cents": 7700,
+   "created_at": "2026-10-27T07:00:00+08:00",
+   "paid_at": "2026-10-27T07:05:00+08:00",
+   "shipped_at": "2026-10-28T07:00:00+08:00",
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0015",
+   "user_id": "USR-DEMO-03",
+   "status": "已发货",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-204",
+     "name": "净界 桌面空气净化器",
+     "qty": 1,
+     "unit_price_cents": 69900
+    }
+   ],
+   "goods_cents": 69900,
+   "shipping_cents": 0,
+   "total_cents": 69900,
+   "created_at": "2026-10-27T06:00:00+08:00",
+   "paid_at": "2026-10-27T06:05:00+08:00",
+   "shipped_at": "2026-10-28T06:00:00+08:00",
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0016",
+   "user_id": "USR-DEMO-04",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-304",
+     "name": "顺发 电动剃须刀",
+     "qty": 1,
+     "unit_price_cents": 25900
+    },
+    {
+     "product_id": "PRD-DEMO-101",
+     "name": "迅充 65W 氮化镓充电器",
+     "qty": 1,
+     "unit_price_cents": 12900
+    }
+   ],
+   "goods_cents": 38800,
+   "shipping_cents": 0,
+   "total_cents": 38800,
+   "created_at": "2026-10-30T11:41:00+08:00",
+   "paid_at": "2026-10-30T11:46:00+08:00",
+   "shipped_at": "2026-10-31T11:41:00+08:00",
+   "signed_at": "2026-11-02T19:41:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0017",
+   "user_id": "USR-DEMO-01",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-008",
+     "name": "声屿 定制刻字版 Air3",
+     "qty": 1,
+     "unit_price_cents": 54900
+    }
+   ],
+   "goods_cents": 54900,
+   "shipping_cents": 0,
+   "total_cents": 54900,
+   "created_at": "2026-10-29T14:03:00+08:00",
+   "paid_at": "2026-10-29T14:08:00+08:00",
+   "shipped_at": "2026-10-30T14:03:00+08:00",
+   "signed_at": "2026-11-01T19:03:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0018",
+   "user_id": "USR-DEMO-02",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-301",
+     "name": "洁齿 声波电动牙刷",
+     "qty": 2,
+     "unit_price_cents": 19900
+    }
+   ],
+   "goods_cents": 39800,
+   "shipping_cents": 0,
+   "total_cents": 39800,
+   "created_at": "2026-10-28T12:48:00+08:00",
+   "paid_at": "2026-10-28T12:53:00+08:00",
+   "shipped_at": "2026-10-29T12:48:00+08:00",
+   "signed_at": "2026-10-31T17:48:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0019",
+   "user_id": "USR-DEMO-05",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-001",
+     "name": "声屿 Air3 降噪耳机",
+     "qty": 1,
+     "unit_price_cents": 49900
+    }
+   ],
+   "goods_cents": 49900,
+   "shipping_cents": 0,
+   "total_cents": 49900,
+   "created_at": "2026-10-26T15:48:00+08:00",
+   "paid_at": "2026-10-26T15:53:00+08:00",
+   "shipped_at": "2026-10-27T15:48:00+08:00",
+   "signed_at": "2026-10-29T20:48:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0020",
+   "user_id": "USR-DEMO-04",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-108",
+     "name": "壳语 定制图案手机壳",
+     "qty": 2,
+     "unit_price_cents": 9900
+    }
+   ],
+   "goods_cents": 19800,
+   "shipping_cents": 0,
+   "total_cents": 19800,
+   "created_at": "2026-10-25T06:40:00+08:00",
+   "paid_at": "2026-10-25T06:45:00+08:00",
+   "shipped_at": "2026-10-26T06:40:00+08:00",
+   "signed_at": "2026-10-28T11:40:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0021",
+   "user_id": "USR-DEMO-01",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-107",
+     "name": "迅充 车载支架",
+     "qty": 1,
+     "unit_price_cents": 8900
+    }
+   ],
+   "goods_cents": 8900,
+   "shipping_cents": 800,
+   "total_cents": 9700,
+   "created_at": "2026-10-24T15:28:00+08:00",
+   "paid_at": "2026-10-24T15:33:00+08:00",
+   "shipped_at": "2026-10-25T15:28:00+08:00",
+   "signed_at": "2026-10-27T17:28:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0022",
+   "user_id": "USR-DEMO-02",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-205",
+     "name": "净界 H13 替换滤网",
+     "qty": 1,
+     "unit_price_cents": 12900
+    }
+   ],
+   "goods_cents": 12900,
+   "shipping_cents": 0,
+   "total_cents": 12900,
+   "created_at": "2026-10-24T04:43:00+08:00",
+   "paid_at": "2026-10-24T04:48:00+08:00",
+   "shipped_at": "2026-10-25T04:43:00+08:00",
+   "signed_at": "2026-10-27T10:43:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0023",
+   "user_id": "USR-DEMO-03",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-206",
+     "name": "暖屋 迷你电饭煲 2L",
+     "qty": 1,
+     "unit_price_cents": 22900
+    },
+    {
+     "product_id": "PRD-DEMO-107",
+     "name": "迅充 车载支架",
+     "qty": 1,
+     "unit_price_cents": 8900
+    }
+   ],
+   "goods_cents": 31800,
+   "shipping_cents": 0,
+   "total_cents": 31800,
+   "created_at": "2026-10-23T16:53:00+08:00",
+   "paid_at": "2026-10-23T16:58:00+08:00",
+   "shipped_at": "2026-10-24T16:53:00+08:00",
+   "signed_at": "2026-10-26T17:53:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0024",
+   "user_id": "USR-DEMO-04",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-106",
+     "name": "壳语 钢化膜两片装",
+     "qty": 1,
+     "unit_price_cents": 2900
+    }
+   ],
+   "goods_cents": 2900,
+   "shipping_cents": 800,
+   "total_cents": 3700,
+   "created_at": "2026-10-22T16:32:00+08:00",
+   "paid_at": "2026-10-22T16:37:00+08:00",
+   "shipped_at": "2026-10-23T16:32:00+08:00",
+   "signed_at": "2026-10-25T16:32:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0025",
+   "user_id": "USR-DEMO-01",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-101",
+     "name": "迅充 65W 氮化镓充电器",
+     "qty": 1,
+     "unit_price_cents": 12900
+    }
+   ],
+   "goods_cents": 12900,
+   "shipping_cents": 0,
+   "total_cents": 12900,
+   "created_at": "2026-10-19T07:19:00+08:00",
+   "paid_at": "2026-10-19T07:24:00+08:00",
+   "shipped_at": "2026-10-20T07:19:00+08:00",
+   "signed_at": "2026-10-22T13:19:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0026",
+   "user_id": "USR-DEMO-02",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-204",
+     "name": "净界 桌面空气净化器",
+     "qty": 1,
+     "unit_price_cents": 69900
+    },
+    {
+     "product_id": "PRD-DEMO-303",
+     "name": "顺发 负离子吹风机",
+     "qty": 2,
+     "unit_price_cents": 29900
+    }
+   ],
+   "goods_cents": 129700,
+   "shipping_cents": 0,
+   "total_cents": 129700,
+   "created_at": "2026-10-17T06:38:00+08:00",
+   "paid_at": "2026-10-17T06:43:00+08:00",
+   "shipped_at": "2026-10-18T06:38:00+08:00",
+   "signed_at": "2026-10-20T10:38:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0027",
+   "user_id": "USR-DEMO-03",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-003",
+     "name": "声屿 Lite 半入耳耳机",
+     "qty": 1,
+     "unit_price_cents": 19900
+    }
+   ],
+   "goods_cents": 19900,
+   "shipping_cents": 0,
+   "total_cents": 19900,
+   "created_at": "2026-10-16T05:27:00+08:00",
+   "paid_at": "2026-10-16T05:32:00+08:00",
+   "shipped_at": "2026-10-17T05:27:00+08:00",
+   "signed_at": "2026-10-19T12:27:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0028",
+   "user_id": "USR-DEMO-04",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-205",
+     "name": "净界 H13 替换滤网",
+     "qty": 2,
+     "unit_price_cents": 12900
+    }
+   ],
+   "goods_cents": 25800,
+   "shipping_cents": 0,
+   "total_cents": 25800,
+   "created_at": "2026-10-15T08:44:00+08:00",
+   "paid_at": "2026-10-15T08:49:00+08:00",
+   "shipped_at": "2026-10-16T08:44:00+08:00",
+   "signed_at": "2026-10-18T14:44:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0029",
+   "user_id": "USR-DEMO-01",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-202",
+     "name": "暖屋 恒温调奶壶",
+     "qty": 2,
+     "unit_price_cents": 19900
+    }
+   ],
+   "goods_cents": 39800,
+   "shipping_cents": 0,
+   "total_cents": 39800,
+   "created_at": "2026-10-11T05:31:00+08:00",
+   "paid_at": "2026-10-11T05:36:00+08:00",
+   "shipped_at": "2026-10-12T05:31:00+08:00",
+   "signed_at": "2026-10-14T10:31:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0030",
+   "user_id": "USR-DEMO-02",
+   "status": "已签收",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-107",
+     "name": "迅充 车载支架",
+     "qty": 1,
+     "unit_price_cents": 8900
+    }
+   ],
+   "goods_cents": 8900,
+   "shipping_cents": 800,
+   "total_cents": 9700,
+   "created_at": "2026-10-01T10:46:00+08:00",
+   "paid_at": "2026-10-01T10:51:00+08:00",
+   "shipped_at": "2026-10-02T10:46:00+08:00",
+   "signed_at": "2026-10-04T18:46:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0031",
+   "user_id": "USR-DEMO-03",
+   "status": "退款中",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-301",
+     "name": "洁齿 声波电动牙刷",
+     "qty": 2,
+     "unit_price_cents": 19900
+    }
+   ],
+   "goods_cents": 39800,
+   "shipping_cents": 0,
+   "total_cents": 39800,
+   "created_at": "2026-10-27T12:10:00+08:00",
+   "paid_at": "2026-10-27T12:15:00+08:00",
+   "shipped_at": "2026-10-28T12:10:00+08:00",
+   "signed_at": "2026-10-30T20:10:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0032",
+   "user_id": "USR-DEMO-04",
+   "status": "退款中",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-001",
+     "name": "声屿 Air3 降噪耳机",
+     "qty": 2,
+     "unit_price_cents": 49900
+    }
+   ],
+   "goods_cents": 99800,
+   "shipping_cents": 0,
+   "total_cents": 99800,
+   "created_at": "2026-10-25T01:26:00+08:00",
+   "paid_at": "2026-10-25T01:31:00+08:00",
+   "shipped_at": "2026-10-26T01:26:00+08:00",
+   "signed_at": "2026-10-28T09:26:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0033",
+   "user_id": "USR-DEMO-01",
+   "status": "退款中",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-105",
+     "name": "壳语 液态硅胶手机壳",
+     "qty": 1,
+     "unit_price_cents": 6900
+    }
+   ],
+   "goods_cents": 6900,
+   "shipping_cents": 800,
+   "total_cents": 7700,
+   "created_at": "2026-10-31T01:54:00+08:00",
+   "paid_at": "2026-10-31T01:59:00+08:00",
+   "shipped_at": "2026-11-01T01:54:00+08:00",
+   "signed_at": "2026-11-03T09:54:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0034",
+   "user_id": "USR-DEMO-02",
+   "status": "已完成",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-301",
+     "name": "洁齿 声波电动牙刷",
+     "qty": 2,
+     "unit_price_cents": 19900
+    },
+    {
+     "product_id": "PRD-DEMO-304",
+     "name": "顺发 电动剃须刀",
+     "qty": 2,
+     "unit_price_cents": 25900
+    }
+   ],
+   "goods_cents": 91600,
+   "shipping_cents": 0,
+   "total_cents": 91600,
+   "created_at": "2026-09-26T11:45:00+08:00",
+   "paid_at": "2026-09-26T11:50:00+08:00",
+   "shipped_at": "2026-09-27T11:45:00+08:00",
+   "signed_at": "2026-09-29T16:45:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0035",
+   "user_id": "USR-DEMO-03",
+   "status": "已完成",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-208",
+     "name": "净界 智能除湿机",
+     "qty": 1,
+     "unit_price_cents": 99900
+    },
+    {
+     "product_id": "PRD-DEMO-206",
+     "name": "暖屋 迷你电饭煲 2L",
+     "qty": 1,
+     "unit_price_cents": 22900
+    }
+   ],
+   "goods_cents": 122800,
+   "shipping_cents": 0,
+   "total_cents": 122800,
+   "created_at": "2026-09-21T18:24:00+08:00",
+   "paid_at": "2026-09-21T18:29:00+08:00",
+   "shipped_at": "2026-09-22T18:24:00+08:00",
+   "signed_at": "2026-09-24T18:24:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0036",
+   "user_id": "USR-DEMO-04",
+   "status": "已完成",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-006",
+     "name": "回响 Home 智能音箱",
+     "qty": 1,
+     "unit_price_cents": 39900
+    }
+   ],
+   "goods_cents": 39900,
+   "shipping_cents": 0,
+   "total_cents": 39900,
+   "created_at": "2026-09-11T17:00:00+08:00",
+   "paid_at": "2026-09-11T17:05:00+08:00",
+   "shipped_at": "2026-09-12T17:00:00+08:00",
+   "signed_at": "2026-09-14T18:00:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0037",
+   "user_id": "USR-DEMO-01",
+   "status": "已完成",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-204",
+     "name": "净界 桌面空气净化器",
+     "qty": 1,
+     "unit_price_cents": 69900
+    }
+   ],
+   "goods_cents": 69900,
+   "shipping_cents": 0,
+   "total_cents": 69900,
+   "created_at": "2026-09-01T08:44:00+08:00",
+   "paid_at": "2026-09-01T08:49:00+08:00",
+   "shipped_at": "2026-09-02T08:44:00+08:00",
+   "signed_at": "2026-09-04T10:44:00+08:00"
+  },
+  {
+   "order_id": "ORD-DEMO-0038",
+   "user_id": "USR-DEMO-02",
+   "status": "已取消",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-203",
+     "name": "轻风 无叶落地扇",
+     "qty": 1,
+     "unit_price_cents": 59900
+    }
+   ],
+   "goods_cents": 59900,
+   "shipping_cents": 0,
+   "total_cents": 59900,
+   "created_at": "2026-11-01T05:00:00+08:00",
+   "paid_at": null,
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0039",
+   "user_id": "USR-DEMO-03",
+   "status": "已取消",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-205",
+     "name": "净界 H13 替换滤网",
+     "qty": 2,
+     "unit_price_cents": 12900
+    }
+   ],
+   "goods_cents": 25800,
+   "shipping_cents": 0,
+   "total_cents": 25800,
+   "created_at": "2026-10-29T06:00:00+08:00",
+   "paid_at": null,
+   "shipped_at": null,
+   "signed_at": null
+  },
+  {
+   "order_id": "ORD-DEMO-0040",
+   "user_id": "USR-DEMO-04",
+   "status": "已取消",
+   "items": [
+    {
+     "product_id": "PRD-DEMO-002",
+     "name": "声屿 Pro 头戴式降噪耳机",
+     "qty": 2,
+     "unit_price_cents": 129900
+    },
+    {
+     "product_id": "PRD-DEMO-104",
+     "name": "迅充 10000mAh 磁吸充电宝",
+     "qty": 1,
+     "unit_price_cents": 15900
+    }
+   ],
+   "goods_cents": 275700,
+   "shipping_cents": 0,
+   "total_cents": 275700,
+   "created_at": "2026-10-24T02:00:00+08:00",
+   "paid_at": null,
+   "shipped_at": null,
+   "signed_at": null
+  }
+ ]
+}

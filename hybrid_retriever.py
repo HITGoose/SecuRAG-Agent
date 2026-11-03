@@ -2,12 +2,15 @@ from rank_bm25 import BM25Okapi
 import jieba
 
 class HybridRetriever:
-    def __init__(self, collection, candidate_k: int = 20, rrf_k: int = 60):
+    def __init__(self, collection, candidate_k: int = 20, rrf_k: int = 60, query_prefix: str = ""):
         self.collection = collection
         self.bm25 = None
         self.documents = []
+        self.ids = []
+        self.metadatas = []
         self.candidate_k = candidate_k  # 每一路召回的候选数
         self.rrf_k = rrf_k              # RRF 平滑常数，论文常用 60
+        self.query_prefix = query_prefix  # 只加在向量检索的查询前（bge 中文模型的检索指令），BM25 用原始查询
 
     def _build_bm25(self):
         """从ChromaDB加载所有文档构建BM25索引"""
@@ -15,6 +18,8 @@ class HybridRetriever:
         if not results['documents']:
             return
         self.documents = results['documents']
+        self.ids = results['ids']
+        self.metadatas = results['metadatas'] or [{} for _ in self.ids]
         # 用jieba分词（支持中文）
         tokenized = [list(jieba.cut(doc)) for doc in self.documents]
         self.bm25 = BM25Okapi(tokenized)
@@ -52,3 +57,36 @@ class HybridRetriever:
         print(f"🔍 混合检索完成：向量{len(vector_docs)}条 + BM25{len(bm25_docs)}条 → RRF融合取{len(combined)}条")
 
         return combined
+
+    # ---------- v2：带 chunk_id 的结构化接口（上面 v1 的 retrieve 保持原样）----------
+
+    def retrieve_with_ids(self, query: str, n_results: int = 20, mode: str = "hybrid") -> list:
+        """
+        返回 [{"id", "text", "metadata", "score"}]，按名次排好。
+        mode: "hybrid" = 向量 + BM25 用 RRF 融合；"vector" / "bm25" = 只用一路（做对照实验用）。
+        和 v1 的 retrieve 算法相同，区别是按 chunk_id 计分，结果能追溯到具体片段。
+        """
+        if self.bm25 is None:
+            self._build_bm25()
+        if not self.ids:
+            return []
+        k = min(max(self.candidate_k, n_results), len(self.ids))
+
+        routes = []
+        if mode in ("hybrid", "vector"):
+            res = self.collection.query(query_texts=[self.query_prefix + query], n_results=k)
+            routes.append(res['ids'][0])
+        if mode in ("hybrid", "bm25"):
+            scores = self.bm25.get_scores(list(jieba.cut(query)))
+            top = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:k]
+            routes.append([self.ids[i] for i in top])
+
+        rrf = {}
+        for ranked_ids in routes:
+            for rank, cid in enumerate(ranked_ids, 1):
+                rrf[cid] = rrf.get(cid, 0.0) + 1.0 / (self.rrf_k + rank)
+        top_ids = sorted(rrf, key=rrf.get, reverse=True)[:n_results]
+
+        pos = {cid: i for i, cid in enumerate(self.ids)}
+        return [{"id": cid, "text": self.documents[pos[cid]], "metadata": self.metadatas[pos[cid]] or {},
+                 "score": rrf[cid]} for cid in top_ids]

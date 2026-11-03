@@ -38,3 +38,23 @@ CHAT_SYSTEM_PROMPT = (
     "你是 SecuRAG 文献助手，一个帮助用户检索、阅读和理解学术论文的 AI 助手。"
     "被问到身份时，请介绍自己是 SecuRAG 文献助手，不要自称其他模型或其他公司的产品。"
 )
+
+# ===== v2：电商客服 Agent（v1 的配置保持不变）=====
+SHOP_DATA_DIR = "shop_data"
+SHOP_DB_PATH = "./shop_local_db"      # v2 独立的向量库目录，不碰 v1 的 my_local_db
+SHOP_RUNTIME_DIR = "./shop_runtime"   # 模拟工单等运行时数据，不进 git
+# 固定的"现在"，退换货期限都按它算，结果不随真实日期变化；与 shop_data/generate_orders.py 一致
+SIMULATION_NOW = "2026-11-03T12:00:00+08:00"
+
+# 中文检索模型（下载到 models/，不进 git）；设成 "default" 则用 ChromaDB 默认的英文 all-MiniLM-L6-v2 做对照
+SHOP_EMBED_MODEL = os.getenv("SHOP_EMBED_MODEL", "models/bge-small-zh-v1.5")
+SHOP_RERANK_MODEL = os.getenv("SHOP_RERANK_MODEL", "models/bge-reranker-base")
+# bge 中文模型建议：短查询检索长段落时，查询前加这句指令，文档不加
+SHOP_EMBED_QUERY_PREFIX = "为这个句子生成表示以用于检索相关文章："
+
+# Agent 循环预算
+MAX_STEPS = 5               # 每个用户轮最多几次"模型决策"
+MAX_TOOL_CALLS = 5          # 每个用户轮最多真正执行几次工具
+MAX_CALLS_PER_RESPONSE = 3  # 模型一次回复里最多执行几个工具调用，多的不执行
+TOOL_TIMEOUT_S = 10         # 单个工具的超时时间
+SHOP_TEMPERATURE = 0.2

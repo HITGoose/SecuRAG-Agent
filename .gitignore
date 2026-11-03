@@ -3,3 +3,8 @@ CAREER_PLAN.md
 __pycache__/
 data
 my_local_db
+# v2 电商客服：本地模型、运行时数据
+models/
+shop_local_db/
+shop_runtime/
+logs/

@@ -1,0 +1,190 @@
+{
+  "version": "products-v1",
+  "note": "全部为虚构商品，品牌名、型号、参数均为演示用，不对应任何真实产品。价格单位为分。",
+  "products": [
+    {"product_id": "PRD-DEMO-001", "name": "声屿 Air3 降噪耳机", "category": "耳机音箱", "price_cents": 49900, "stock": 120, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"降噪": "主动降噪，最深35dB", "续航": "耳机单次6小时，加充电盒共30小时", "防水": "IPX4", "蓝牙": "5.3"},
+     "description": "入耳式真无线降噪耳机，支持通透模式和双设备连接，充电10分钟可听歌约2小时。",
+     "faq": [
+       {"q": "开降噪后续航多久？", "a": "开启主动降噪时耳机单次约5小时，关闭降噪约6小时，加上充电盒总续航约30小时。"},
+       {"q": "可以同时连手机和电脑吗？", "a": "支持双设备连接，可同时连接两台设备，来电时自动切到手机。"},
+       {"q": "游泳能戴吗？", "a": "防水等级为IPX4，只能防汗和小雨，不能游泳或洗澡时佩戴。"}
+     ]},
+    {"product_id": "PRD-DEMO-002", "name": "声屿 Pro 头戴式降噪耳机", "category": "耳机音箱", "price_cents": 129900, "stock": 35, "warranty_months": 24, "no_reason_return": true,
+     "specs": {"降噪": "主动降噪，最深42dB", "续航": "开降噪40小时，关降噪60小时", "接口": "USB-C、3.5mm", "重量": "250克"},
+     "description": "头戴式降噪耳机，可折叠收纳，附带硬质收纳盒和3.5mm音频线，支持有线模式。",
+     "faq": [
+       {"q": "没电了还能用吗？", "a": "可以通过附带的3.5mm音频线有线使用，有线模式下不需要电量，但降噪不可用。"},
+       {"q": "保修多久？", "a": "整机保修24个月，耳罩等易损件保修6个月。"}
+     ]},
+    {"product_id": "PRD-DEMO-003", "name": "声屿 Lite 半入耳耳机", "category": "耳机音箱", "price_cents": 19900, "stock": 300, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"降噪": "通话降噪，无主动降噪", "续航": "单次5小时，总计24小时", "蓝牙": "5.3"},
+     "description": "半入耳式真无线耳机，佩戴轻，适合长时间通话，不支持主动降噪。",
+     "faq": [
+       {"q": "有主动降噪吗？", "a": "没有主动降噪，只有通话降噪，用于减少通话时对方听到的环境噪音。"}
+     ]},
+    {"product_id": "PRD-DEMO-004", "name": "声屿 Sport 运动耳机", "category": "耳机音箱", "price_cents": 29900, "stock": 0, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"佩戴": "耳挂式", "续航": "单次10小时", "防水": "IPX7"},
+     "description": "耳挂式运动耳机，跑步不易掉落，防水等级IPX7，可以用清水冲洗。",
+     "faq": [
+       {"q": "什么时候补货？", "a": "该商品目前缺货，补货时间以商品页通知为准，客服无法承诺具体到货日期。"}
+     ]},
+    {"product_id": "PRD-DEMO-005", "name": "回响 Mini 蓝牙音箱", "category": "耳机音箱", "price_cents": 15900, "stock": 80, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"功率": "5W", "续航": "12小时", "防水": "IPX5"},
+     "description": "便携蓝牙音箱，带挂绳，支持两台音箱串联立体声。",
+     "faq": [
+       {"q": "能连两个音箱吗？", "a": "两台回响 Mini 可以串联组成立体声，需要在App里开启串联模式。"}
+     ]},
+    {"product_id": "PRD-DEMO-006", "name": "回响 Home 智能音箱", "category": "耳机音箱", "price_cents": 39900, "stock": 60, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"功率": "20W", "联网": "Wi-Fi 2.4G/5G", "供电": "插电使用，无内置电池"},
+     "description": "家用智能音箱，支持语音控制和多房间播放，需要插电使用。",
+     "faq": [
+       {"q": "可以带出门用吗？", "a": "没有内置电池，必须插电使用，不适合户外。户外建议选择回响 Mini。"}
+     ]},
+    {"product_id": "PRD-DEMO-007", "name": "声屿 Kids 儿童耳机", "category": "耳机音箱", "price_cents": 12900, "stock": 45, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"音量限制": "最大85分贝", "续航": "20小时", "佩戴": "头戴式"},
+     "description": "儿童头戴耳机，音量上限85分贝，保护听力，头梁可调节。",
+     "faq": [
+       {"q": "适合几岁孩子？", "a": "建议3岁以上儿童在家长陪同下使用。"}
+     ]},
+    {"product_id": "PRD-DEMO-008", "name": "声屿 定制刻字版 Air3", "category": "耳机音箱", "price_cents": 54900, "stock": 50, "warranty_months": 12, "no_reason_return": false,
+     "specs": {"降噪": "同 Air3", "刻字": "充电盒可刻最多10个字符"},
+     "description": "Air3 的定制刻字版本，充电盒激光刻字。定制商品下单后开始制作，不支持七天无理由退货，质量问题仍可退换。",
+     "faq": [
+       {"q": "刻字版能退吗？", "a": "定制刻字商品不支持七天无理由退货；如有质量问题，按质量问题政策处理。"}
+     ]},
+    {"product_id": "PRD-DEMO-101", "name": "迅充 65W 氮化镓充电器", "category": "手机配件", "price_cents": 12900, "stock": 200, "warranty_months": 18, "no_reason_return": true,
+     "specs": {"功率": "最大65W", "接口": "2个USB-C + 1个USB-A", "协议": "PD3.0、QC4"},
+     "description": "三口氮化镓充电器，可同时给笔记本、手机和耳机充电，插脚可折叠。",
+     "faq": [
+       {"q": "能给笔记本充电吗？", "a": "支持PD协议的笔记本可以充电，单口最大65W；三口同时使用时功率会自动分配。"},
+       {"q": "三个口一起用每个多少瓦？", "a": "三口同时使用时约为45W+15W+5W，具体以设备协商结果为准。"}
+     ]},
+    {"product_id": "PRD-DEMO-102", "name": "迅充 20W 快充头", "category": "手机配件", "price_cents": 4900, "stock": 500, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"功率": "20W", "接口": "1个USB-C"},
+     "description": "单口20W快充充电头，体积小，适合手机快充。",
+     "faq": [
+       {"q": "送线吗？", "a": "不附带充电线，需要另外购买。"}
+     ]},
+    {"product_id": "PRD-DEMO-103", "name": "迅充 双头编织数据线 1.5米", "category": "手机配件", "price_cents": 3900, "stock": 800, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"长度": "1.5米", "接口": "USB-C 转 USB-C", "功率": "最大100W"},
+     "description": "编织外皮数据线，支持100W快充和USB2.0数据传输。",
+     "faq": [
+       {"q": "能传视频到显示器吗？", "a": "不支持视频输出，只支持充电和USB2.0数据传输。"}
+     ]},
+    {"product_id": "PRD-DEMO-104", "name": "迅充 10000mAh 磁吸充电宝", "category": "手机配件", "price_cents": 15900, "stock": 150, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"容量": "10000mAh", "无线输出": "15W", "有线输出": "20W"},
+     "description": "磁吸无线充电宝，可吸附在支持磁吸的手机背面，额定能量符合登机要求。",
+     "faq": [
+       {"q": "能带上飞机吗？", "a": "额定能量约38.5Wh，低于100Wh，一般可以随身携带登机，不能托运；具体以航空公司规定为准。"}
+     ]},
+    {"product_id": "PRD-DEMO-105", "name": "壳语 液态硅胶手机壳", "category": "手机配件", "price_cents": 6900, "stock": 400, "warranty_months": 3, "no_reason_return": true,
+     "specs": {"材质": "液态硅胶 + 超细纤维内衬", "适配": "下单时选择机型"},
+     "description": "液态硅胶手机壳，手感细腻，内衬超细纤维防刮。",
+     "faq": [
+       {"q": "买错机型了怎么办？", "a": "未使用且包装完好时可在七天无理由期限内退货，或在15天内换成正确机型，换货运费规则见运费政策。"}
+     ]},
+    {"product_id": "PRD-DEMO-106", "name": "壳语 钢化膜两片装", "category": "手机配件", "price_cents": 2900, "stock": 600, "warranty_months": 0, "no_reason_return": true,
+     "specs": {"硬度": "9H", "数量": "2片", "适配": "下单时选择机型"},
+     "description": "高清钢化膜两片装，附贴膜工具。已贴上的膜不支持无理由退货。",
+     "faq": [
+       {"q": "贴歪了能退吗？", "a": "已经贴上使用的膜不支持七天无理由退货；未拆封的可以退。"}
+     ]},
+    {"product_id": "PRD-DEMO-107", "name": "迅充 车载支架", "category": "手机配件", "price_cents": 8900, "stock": 90, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"安装": "出风口夹持", "无线充电": "15W"},
+     "description": "出风口车载支架，带15W无线充电，需要车载USB供电。",
+     "faq": [
+       {"q": "圆形出风口能装吗？", "a": "只适配横条和竖条出风口，圆形出风口无法稳定夹持。"}
+     ]},
+    {"product_id": "PRD-DEMO-108", "name": "壳语 定制图案手机壳", "category": "手机配件", "price_cents": 9900, "stock": 100, "warranty_months": 3, "no_reason_return": false,
+     "specs": {"材质": "PC硬壳", "图案": "用户上传图片打印"},
+     "description": "根据用户上传的图片定制打印的手机壳，属于定制商品，不支持七天无理由退货。",
+     "faq": [
+       {"q": "定制手机壳印得不清楚怎么办？", "a": "如果打印模糊、偏色明显，属于质量问题，可以在签收后7天内申请退货或15天内换货。"}
+     ]},
+    {"product_id": "PRD-DEMO-201", "name": "暖屋 1.5L 电热水壶", "category": "小家电", "price_cents": 9900, "stock": 140, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"容量": "1.5L", "功率": "1800W", "内胆": "304不锈钢"},
+     "description": "电热水壶，烧开约5分钟，干烧自动断电，内胆为304不锈钢。",
+     "faq": [
+       {"q": "可以保温吗？", "a": "这款没有保温功能，烧开后自动断电。需要保温请选择暖屋恒温壶。"}
+     ]},
+    {"product_id": "PRD-DEMO-202", "name": "暖屋 恒温调奶壶", "category": "小家电", "price_cents": 19900, "stock": 70, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"容量": "1.2L", "温度": "40–90℃可调", "保温": "24小时"},
+     "description": "恒温调奶壶，可设定40到90度，适合冲奶粉和泡茶。",
+     "faq": [
+       {"q": "能直接烧开水吗？", "a": "可以先烧开再降到设定温度保温，烧开模式下会沸腾约1分钟除氯。"}
+     ]},
+    {"product_id": "PRD-DEMO-203", "name": "轻风 无叶落地扇", "category": "小家电", "price_cents": 59900, "stock": 25, "warranty_months": 24, "no_reason_return": true,
+     "specs": {"档位": "12档", "噪音": "最低28分贝", "遥控": "支持"},
+     "description": "无叶落地扇，12档风速，睡眠模式噪音低，附带遥控器。",
+     "faq": [
+       {"q": "噪音大吗？", "a": "最低档约28分贝，最高档约55分贝。"}
+     ]},
+    {"product_id": "PRD-DEMO-204", "name": "净界 桌面空气净化器", "category": "小家电", "price_cents": 69900, "stock": 40, "warranty_months": 24, "no_reason_return": true,
+     "specs": {"CADR": "200立方米/小时", "适用面积": "14–24平方米", "滤网": "H13级，建议6个月更换"},
+     "description": "桌面空气净化器，适合卧室和书房，滤网可单独购买。",
+     "faq": [
+       {"q": "滤网多久换一次？", "a": "建议约6个月更换一次，机器会根据使用时长提醒；滤网属于耗材，不在整机保修范围内。"}
+     ]},
+    {"product_id": "PRD-DEMO-205", "name": "净界 H13 替换滤网", "category": "小家电", "price_cents": 12900, "stock": 300, "warranty_months": 0, "no_reason_return": true,
+     "specs": {"等级": "H13", "适配": "净界桌面空气净化器"},
+     "description": "净界桌面空气净化器专用替换滤网。拆封后不支持七天无理由退货。",
+     "faq": [
+       {"q": "拆了包装能退吗？", "a": "滤网拆封后影响二次销售，不支持七天无理由退货；未拆封可以退。"}
+     ]},
+    {"product_id": "PRD-DEMO-206", "name": "暖屋 迷你电饭煲 2L", "category": "小家电", "price_cents": 22900, "stock": 55, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"容量": "2L", "功能": "煮饭、煮粥、预约", "内胆": "不粘涂层"},
+     "description": "2升迷你电饭煲，适合1到3人，支持24小时预约。",
+     "faq": [
+       {"q": "内胆涂层掉了保修吗？", "a": "正常使用下12个月内涂层脱落可以保修；使用金属铲刮伤导致的脱落属于人为损坏，不在保修范围。"}
+     ]},
+    {"product_id": "PRD-DEMO-207", "name": "轻风 手持挂脖风扇", "category": "小家电", "price_cents": 7900, "stock": 0, "warranty_months": 6, "no_reason_return": true,
+     "specs": {"续航": "4–12小时", "档位": "3档"},
+     "description": "挂脖小风扇，无叶设计不夹头发，USB-C充电。",
+     "faq": [
+       {"q": "有货吗？", "a": "目前缺货，补货时间以商品页通知为准。"}
+     ]},
+    {"product_id": "PRD-DEMO-208", "name": "净界 智能除湿机", "category": "小家电", "price_cents": 99900, "stock": 15, "warranty_months": 24, "no_reason_return": true,
+     "specs": {"除湿量": "12升/天", "水箱": "2.5L", "适用面积": "10–30平方米"},
+     "description": "家用除湿机，水箱满自动停机，支持连续排水。大件商品，退货需预约上门取件。",
+     "faq": [
+       {"q": "退货怎么寄回？", "a": "大件商品退货需要预约上门取件，取件时间由客服登记后安排。"}
+     ]},
+    {"product_id": "PRD-DEMO-301", "name": "洁齿 声波电动牙刷", "category": "个护", "price_cents": 19900, "stock": 160, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"模式": "4种", "续航": "约30天", "防水": "IPX7"},
+     "description": "声波电动牙刷，附2个刷头。出于卫生原因，拆封后不支持七天无理由退货。",
+     "faq": [
+       {"q": "用过了能退吗？", "a": "个护类商品拆封后不支持七天无理由退货；如有质量问题，可按质量问题政策退换。"}
+     ]},
+    {"product_id": "PRD-DEMO-302", "name": "洁齿 替换刷头4支装", "category": "个护", "price_cents": 6900, "stock": 400, "warranty_months": 0, "no_reason_return": true,
+     "specs": {"数量": "4支", "适配": "洁齿声波电动牙刷"},
+     "description": "电动牙刷替换刷头，建议每3个月更换一次。拆封后不退。",
+     "faq": [
+       {"q": "多久换一次刷头？", "a": "建议每3个月更换一次，刷毛明显散开时应提前更换。"}
+     ]},
+    {"product_id": "PRD-DEMO-303", "name": "顺发 负离子吹风机", "category": "个护", "price_cents": 29900, "stock": 75, "warranty_months": 24, "no_reason_return": true,
+     "specs": {"功率": "1600W", "温度": "3档", "风嘴": "2个可替换"},
+     "description": "负离子吹风机，带恒温保护，附两个风嘴。",
+     "faq": [
+       {"q": "出国能用吗？", "a": "额定电压为220V，不支持110V地区使用。"}
+     ]},
+    {"product_id": "PRD-DEMO-304", "name": "顺发 电动剃须刀", "category": "个护", "price_cents": 25900, "stock": 65, "warranty_months": 24, "no_reason_return": true,
+     "specs": {"刀头": "三刀头浮动", "防水": "IPX7，可水洗", "续航": "60分钟"},
+     "description": "三刀头电动剃须刀，支持干湿两用。出于卫生原因，拆封后不支持七天无理由退货。",
+     "faq": [
+       {"q": "刀头能单独买吗？", "a": "可以单独购买原装替换刀头，建议12到18个月更换一次。"}
+     ]},
+    {"product_id": "PRD-DEMO-305", "name": "柔肤 洁面仪", "category": "个护", "price_cents": 16900, "stock": 0, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"防水": "IPX7", "档位": "5档"},
+     "description": "硅胶洁面仪，5档力度，可水洗。拆封后不支持七天无理由退货。",
+     "faq": [
+       {"q": "敏感肌能用吗？", "a": "建议使用最低档并减少使用频率；如出现不适请停止使用。本说明不构成医疗建议。"}
+     ]},
+    {"product_id": "PRD-DEMO-306", "name": "顺发 卷发棒 28mm", "category": "个护", "price_cents": 13900, "stock": 85, "warranty_months": 12, "no_reason_return": true,
+     "specs": {"直径": "28毫米", "温度": "120–200℃可调", "自动断电": "60分钟无操作"},
+     "description": "陶瓷涂层卷发棒，温度可调，60分钟无操作自动断电。",
+     "faq": [
+       {"q": "会伤头发吗？", "a": "建议细软发使用160度以下温度，并配合隔热产品使用。"}
+     ]}
+  ]
+}

@@ -1,0 +1,3744 @@
+[
+ {
+  "config": "英文嵌入 + 英文重排（v1 原配置）",
+  "mode": "纯向量",
+  "n": 21,
+  "hit@1": 0.19,
+  "hit@3": 0.381,
+  "recall@3": 0.381,
+  "mrr@5": 0.299,
+  "avg_ms": 338.5,
+  "misses@3": [
+   "dp02",
+   "dp03",
+   "dp08",
+   "dp10",
+   "dq02",
+   "dq03",
+   "dq04",
+   "dq05",
+   "dq06",
+   "dq07",
+   "dq08",
+   "dq09",
+   "dq11"
+  ],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-008#main",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-207#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-003#main",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-007#main",
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-004#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-106#main",
+     "PRD-DEMO-302#main",
+     "PRD-DEMO-004#faq1",
+     "PRD-DEMO-206#main",
+     "PRD-DEMO-106#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-305#main",
+     "PRD-DEMO-304#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-302#faq1",
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-301#faq1",
+     "PRD-DEMO-305#faq1",
+     "PRD-DEMO-106#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-003#main",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-007#main",
+     "PRD-DEMO-001#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-304#main",
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-202#main",
+     "PRD-DEMO-203#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-207#faq1",
+     "PRD-DEMO-305#faq1",
+     "PRD-DEMO-301#faq1",
+     "PRD-DEMO-008#faq1",
+     "PRD-DEMO-105#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-208#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-208#main",
+     "PRD-DEMO-204#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-203#faq1",
+     "PRD-DEMO-203#main",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-303#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.2
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-COMPLAINT#s3",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-LOGISTICS#s3",
+     "POL-LOGISTICS#s1",
+     "POL-COMPLAINT#s2",
+     "POL-SHIPPING-FEE#s2",
+     "POL-COMPLAINT#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-EXCHANGE#s2",
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-COMPLAINT#s3",
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s1",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-COMPLAINT#s3",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-COMPLAINT#s3",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-LOGISTICS#s1",
+     "POL-COMPLAINT#s2",
+     "POL-LOGISTICS#s3",
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s3"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-LOGISTICS#s1",
+     "POL-COMPLAINT#s2",
+     "POL-LOGISTICS#s3",
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s3"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-INVOICE#s1",
+     "POL-COMPLAINT#s3",
+     "POL-EXCHANGE#s2",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-COMPLAINT#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-COMPLAINT#s3",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-COMPLAINT#s1",
+     "POL-LOGISTICS#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-QUALITY#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-QUALITY#s2",
+     "POL-NOT-RETURNABLE#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   }
+  ]
+ },
+ {
+  "config": "英文嵌入 + 英文重排（v1 原配置）",
+  "mode": "BM25",
+  "n": 21,
+  "hit@1": 0.762,
+  "hit@3": 0.905,
+  "recall@3": 0.881,
+  "mrr@5": 0.857,
+  "avg_ms": 0.2,
+  "misses@3": [
+   "dp08",
+   "dq02"
+  ],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-002#main",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-001#faq3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-205#faq1",
+     "PRD-DEMO-301#faq1",
+     "PRD-DEMO-206#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-104#main",
+     "PRD-DEMO-107#main",
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-101#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-202#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-302#faq1",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-205#main",
+     "PRD-DEMO-002#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-007#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-102#main",
+     "PRD-DEMO-208#faq1",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-101#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-103#main",
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-304#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-208#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-303#main",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-108#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-REFUND-TIME#s2",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-RETURN-7D#s4",
+     "POL-PRICE-PROTECT#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-LOGISTICS#s2",
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s1",
+     "POL-INVOICE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-SHIPPING-FEE#s1",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s2",
+     "POL-COMPLAINT#s3",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-PRICE-PROTECT#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-NOT-RETURNABLE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "英文嵌入 + 英文重排（v1 原配置）",
+  "mode": "混合RRF",
+  "n": 21,
+  "hit@1": 0.381,
+  "hit@3": 0.619,
+  "recall@3": 0.619,
+  "mrr@5": 0.516,
+  "avg_ms": 320.1,
+  "misses@3": [
+   "dp03",
+   "dq02",
+   "dq03",
+   "dq04",
+   "dq05",
+   "dq06",
+   "dq07",
+   "dq08"
+  ],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-008#main",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-001#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-007#main",
+     "PRD-DEMO-106#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-303#main",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-304#faq1",
+     "PRD-DEMO-205#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-002#faq2",
+     "PRD-DEMO-104#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-302#faq1",
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-304#faq1",
+     "PRD-DEMO-208#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-007#main",
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-002#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-102#faq1",
+     "PRD-DEMO-107#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-301#faq1",
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-304#faq1",
+     "PRD-DEMO-005#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-208#faq1",
+     "PRD-DEMO-208#main",
+     "PRD-DEMO-201#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-203#faq1",
+     "PRD-DEMO-106#main",
+     "PRD-DEMO-102#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s2",
+     "POL-REFUND-TIME#s2",
+     "POL-REFUND-TIME#s1",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-EXCHANGE#s2",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-RETURN-7D#s3"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-REFUND-TIME#s2",
+     "POL-RETURN-7D#s3"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s3",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s3",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-INVOICE#s1",
+     "POL-LOGISTICS#s3",
+     "POL-COMPLAINT#s1",
+     "POL-EXCHANGE#s2",
+     "POL-SHIPPING-FEE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-INVOICE#s1",
+     "POL-LOGISTICS#s3",
+     "POL-COMPLAINT#s1",
+     "POL-SHIPPING-FEE#s3"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s3",
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s2",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-EXCHANGE#s2",
+     "POL-INVOICE#s2",
+     "POL-SHIPPING-FEE#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-QUALITY#s1",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-EXCHANGE#s1",
+     "POL-QUALITY#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "英文嵌入 + 英文重排（v1 原配置）",
+  "mode": "混合+重排",
+  "n": 21,
+  "hit@1": 0.143,
+  "hit@3": 0.381,
+  "recall@3": 0.381,
+  "mrr@5": 0.313,
+  "avg_ms": 431.6,
+  "misses@3": [
+   "dp03",
+   "dp04",
+   "dp05",
+   "dp06",
+   "dp09",
+   "dq02",
+   "dq03",
+   "dq04",
+   "dq05",
+   "dq06",
+   "dq07",
+   "dq08",
+   "dq10"
+  ],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-008#main",
+     "PRD-DEMO-001#faq2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-003#main",
+     "PRD-DEMO-207#faq1",
+     "PRD-DEMO-001#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-304#faq1",
+     "PRD-DEMO-206#main",
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-106#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-304#main",
+     "PRD-DEMO-206#faq1",
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-208#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-106#main",
+     "PRD-DEMO-301#main",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-105#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-003#main",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-002#main",
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-007#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#main",
+     "PRD-DEMO-304#main",
+     "PRD-DEMO-203#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-305#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-106#main",
+     "PRD-DEMO-108#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-208#main",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-208#faq1",
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-006#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.2
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-202#main",
+     "PRD-DEMO-206#faq1",
+     "PRD-DEMO-108#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s3",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s4",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-LOGISTICS#s3",
+     "POL-REFUND-TIME#s2",
+     "POL-EXCHANGE#s2",
+     "POL-NOT-RETURNABLE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.2
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s2",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-QUALITY#s3",
+     "POL-PRICE-PROTECT#s2",
+     "POL-LOGISTICS#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-RETURN-7D#s3",
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s1",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s3",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s3",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-LOGISTICS#s3",
+     "POL-RETURN-7D#s3",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-LOGISTICS#s3",
+     "POL-RETURN-7D#s3",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-RETURN-7D#s3",
+     "POL-LOGISTICS#s4",
+     "POL-COMPLAINT#s2",
+     "POL-EXCHANGE#s1",
+     "POL-QUALITY#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s2",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-RETURN-7D#s3",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-QUALITY#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-QUALITY#s3",
+     "POL-PRICE-PROTECT#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "中文嵌入 + 英文重排",
+  "mode": "纯向量",
+  "n": 21,
+  "hit@1": 0.952,
+  "hit@3": 1.0,
+  "recall@3": 1.0,
+  "mrr@5": 0.976,
+  "avg_ms": 18.2,
+  "misses@3": [],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-002#faq2",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-008#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-007#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-104#main",
+     "PRD-DEMO-107#main",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-107#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-201#main",
+     "PRD-DEMO-202#main",
+     "PRD-DEMO-206#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-205#main",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-205#faq1",
+     "PRD-DEMO-302#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-002#faq2",
+     "PRD-DEMO-007#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-101#main",
+     "PRD-DEMO-102#main",
+     "PRD-DEMO-102#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-103#main",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-006#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-104#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-303#main",
+     "PRD-DEMO-306#main",
+     "PRD-DEMO-203#faq1",
+     "PRD-DEMO-203#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-REFUND-TIME#s1",
+     "POL-EXCHANGE#s1",
+     "POL-REFUND-TIME#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-RETURN-7D#s3",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-RETURN-7D#s1",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s4",
+     "POL-SHIPPING-FEE#s3",
+     "POL-SHIPPING-FEE#s1",
+     "POL-NOT-RETURNABLE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-REFUND-TIME#s2",
+     "POL-RETURN-7D#s4",
+     "POL-REFUND-TIME#s1",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-LOGISTICS#s2",
+     "POL-LOGISTICS#s4",
+     "POL-LOGISTICS#s3",
+     "POL-LOGISTICS#s1",
+     "POL-COMPLAINT#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s1",
+     "POL-SHIPPING-FEE#s2",
+     "POL-SHIPPING-FEE#s3",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s2",
+     "POL-COMPLAINT#s3",
+     "POL-COMPLAINT#s1",
+     "POL-REFUND-TIME#s1",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-SHIPPING-FEE#s2",
+     "POL-LOGISTICS#s3",
+     "POL-PRICE-PROTECT#s1",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-QUALITY#s1",
+     "POL-QUALITY#s3",
+     "POL-RETURN-7D#s2",
+     "POL-PRICE-PROTECT#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "中文嵌入 + 英文重排",
+  "mode": "BM25",
+  "n": 21,
+  "hit@1": 0.762,
+  "hit@3": 0.905,
+  "recall@3": 0.881,
+  "mrr@5": 0.857,
+  "avg_ms": 0.1,
+  "misses@3": [
+   "dp08",
+   "dq02"
+  ],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-002#main",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-001#faq3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-205#faq1",
+     "PRD-DEMO-301#faq1",
+     "PRD-DEMO-206#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-104#main",
+     "PRD-DEMO-107#main",
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-101#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-202#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-302#faq1",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-205#main",
+     "PRD-DEMO-002#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-007#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-102#main",
+     "PRD-DEMO-208#faq1",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-101#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-103#main",
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-304#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-208#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-303#main",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-108#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-REFUND-TIME#s2",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-RETURN-7D#s4",
+     "POL-PRICE-PROTECT#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-LOGISTICS#s2",
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s1",
+     "POL-INVOICE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-SHIPPING-FEE#s1",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s2",
+     "POL-COMPLAINT#s3",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-PRICE-PROTECT#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-NOT-RETURNABLE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "中文嵌入 + 英文重排",
+  "mode": "混合RRF",
+  "n": 21,
+  "hit@1": 0.952,
+  "hit@3": 1.0,
+  "recall@3": 0.976,
+  "mrr@5": 0.976,
+  "avg_ms": 7.7,
+  "misses@3": [],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-002#main",
+     "PRD-DEMO-001#faq2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-008#main",
+     "PRD-DEMO-004#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-104#main",
+     "PRD-DEMO-107#main",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-006#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-202#main",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-106#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-205#main",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-302#faq1",
+     "PRD-DEMO-002#faq2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-007#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-102#main",
+     "PRD-DEMO-101#main",
+     "PRD-DEMO-107#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-103#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-001#faq2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-208#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-303#main",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-203#faq1",
+     "PRD-DEMO-101#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s4",
+     "POL-REFUND-TIME#s1",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-RETURN-7D#s1",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-RETURN-7D#s3",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-EXCHANGE#s2",
+     "POL-SHIPPING-FEE#s2",
+     "POL-NOT-RETURNABLE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-REFUND-TIME#s2",
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s1",
+     "POL-EXCHANGE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-LOGISTICS#s2",
+     "POL-EXCHANGE#s1",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-QUALITY#s1",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s1",
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s4",
+     "POL-SHIPPING-FEE#s3",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s2",
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s3",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s2",
+     "POL-QUALITY#s1",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "中文嵌入 + 英文重排",
+  "mode": "混合+重排",
+  "n": 21,
+  "hit@1": 0.143,
+  "hit@3": 0.476,
+  "recall@3": 0.452,
+  "mrr@5": 0.329,
+  "avg_ms": 105.8,
+  "misses@3": [
+   "dp03",
+   "dp05",
+   "dp06",
+   "dp09",
+   "dq03",
+   "dq04",
+   "dq05",
+   "dq06",
+   "dq07",
+   "dq08",
+   "dq10"
+  ],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-008#main",
+     "PRD-DEMO-001#faq2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-003#main",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-006#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-304#faq1",
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-107#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-206#faq1",
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-002#faq2",
+     "PRD-DEMO-201#main",
+     "PRD-DEMO-202#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-208#main",
+     "PRD-DEMO-206#faq1",
+     "PRD-DEMO-108#main",
+     "PRD-DEMO-301#main",
+     "PRD-DEMO-002#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-003#main",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-002#main",
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-007#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#main",
+     "PRD-DEMO-304#main",
+     "PRD-DEMO-306#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-107#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-107#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-208#main",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-003#main",
+     "PRD-DEMO-208#faq1",
+     "PRD-DEMO-004#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-206#faq1",
+     "PRD-DEMO-108#main",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-203#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s3",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s4",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-LOGISTICS#s3",
+     "POL-EXCHANGE#s2",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-RETURN-7D#s4",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s2",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-LOGISTICS#s4",
+     "POL-NOT-RETURNABLE#s3"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-RETURN-7D#s3",
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s1",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s3",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s3",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-LOGISTICS#s3",
+     "POL-RETURN-7D#s3",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-LOGISTICS#s3",
+     "POL-RETURN-7D#s3",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-RETURN-7D#s3",
+     "POL-COMPLAINT#s2",
+     "POL-EXCHANGE#s1",
+     "POL-QUALITY#s4",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s2",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-RETURN-7D#s3",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-QUALITY#s1",
+     "POL-QUALITY#s3",
+     "POL-PRICE-PROTECT#s1",
+     "POL-QUALITY#s4"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "中文嵌入 + 中文重排（v2 配置）",
+  "mode": "纯向量",
+  "n": 21,
+  "hit@1": 0.952,
+  "hit@3": 1.0,
+  "recall@3": 1.0,
+  "mrr@5": 0.976,
+  "avg_ms": 9.8,
+  "misses@3": [],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-002#faq2",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-008#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-007#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-104#main",
+     "PRD-DEMO-107#main",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-107#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-201#main",
+     "PRD-DEMO-202#main",
+     "PRD-DEMO-206#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-205#main",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-205#faq1",
+     "PRD-DEMO-302#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-002#faq2",
+     "PRD-DEMO-007#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-101#main",
+     "PRD-DEMO-102#main",
+     "PRD-DEMO-102#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-103#main",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-006#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-104#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-303#main",
+     "PRD-DEMO-306#main",
+     "PRD-DEMO-203#faq1",
+     "PRD-DEMO-203#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-REFUND-TIME#s1",
+     "POL-EXCHANGE#s1",
+     "POL-REFUND-TIME#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-RETURN-7D#s3",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-RETURN-7D#s1",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s4",
+     "POL-SHIPPING-FEE#s3",
+     "POL-SHIPPING-FEE#s1",
+     "POL-NOT-RETURNABLE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-REFUND-TIME#s2",
+     "POL-RETURN-7D#s4",
+     "POL-REFUND-TIME#s1",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-LOGISTICS#s2",
+     "POL-LOGISTICS#s4",
+     "POL-LOGISTICS#s3",
+     "POL-LOGISTICS#s1",
+     "POL-COMPLAINT#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s1",
+     "POL-SHIPPING-FEE#s2",
+     "POL-SHIPPING-FEE#s3",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s2",
+     "POL-COMPLAINT#s3",
+     "POL-COMPLAINT#s1",
+     "POL-REFUND-TIME#s1",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-SHIPPING-FEE#s2",
+     "POL-LOGISTICS#s3",
+     "POL-PRICE-PROTECT#s1",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-QUALITY#s1",
+     "POL-QUALITY#s3",
+     "POL-RETURN-7D#s2",
+     "POL-PRICE-PROTECT#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "中文嵌入 + 中文重排（v2 配置）",
+  "mode": "BM25",
+  "n": 21,
+  "hit@1": 0.762,
+  "hit@3": 0.905,
+  "recall@3": 0.881,
+  "mrr@5": 0.857,
+  "avg_ms": 0.1,
+  "misses@3": [
+   "dp08",
+   "dq02"
+  ],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-002#main",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-001#faq3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-205#faq1",
+     "PRD-DEMO-301#faq1",
+     "PRD-DEMO-206#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-104#main",
+     "PRD-DEMO-107#main",
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-101#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-202#main"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-302#faq1",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-205#main",
+     "PRD-DEMO-002#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-007#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-102#main",
+     "PRD-DEMO-208#faq1",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-101#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-103#main",
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-304#faq1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-208#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-303#main",
+     "PRD-DEMO-106#faq1",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-108#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-REFUND-TIME#s2",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-RETURN-7D#s4",
+     "POL-PRICE-PROTECT#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-LOGISTICS#s2",
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s1",
+     "POL-INVOICE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-SHIPPING-FEE#s1",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s2",
+     "POL-COMPLAINT#s3",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s2"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-PRICE-PROTECT#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-NOT-RETURNABLE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "中文嵌入 + 中文重排（v2 配置）",
+  "mode": "混合RRF",
+  "n": 21,
+  "hit@1": 0.952,
+  "hit@3": 1.0,
+  "recall@3": 0.976,
+  "mrr@5": 0.976,
+  "avg_ms": 8.7,
+  "misses@3": [],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-002#main",
+     "PRD-DEMO-001#faq2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-008#main",
+     "PRD-DEMO-004#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-104#main",
+     "PRD-DEMO-107#main",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-006#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-202#main",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-106#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-205#main",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-302#faq1",
+     "PRD-DEMO-002#faq2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-001#faq2",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-007#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-102#main",
+     "PRD-DEMO-101#main",
+     "PRD-DEMO-107#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-103#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-001#faq2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-005#faq1",
+     "PRD-DEMO-005#main",
+     "PRD-DEMO-208#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-303#main",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-203#faq1",
+     "PRD-DEMO-101#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s4",
+     "POL-REFUND-TIME#s1",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-RETURN-7D#s1",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-RETURN-7D#s3",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-RETURN-7D#s4",
+     "POL-NOT-RETURNABLE#s3",
+     "POL-EXCHANGE#s2",
+     "POL-SHIPPING-FEE#s2",
+     "POL-NOT-RETURNABLE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-REFUND-TIME#s2",
+     "POL-RETURN-7D#s4",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s1",
+     "POL-EXCHANGE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-LOGISTICS#s2",
+     "POL-EXCHANGE#s1",
+     "POL-EXCHANGE#s2",
+     "POL-RETURN-7D#s2",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-QUALITY#s1",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s1",
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s4",
+     "POL-SHIPPING-FEE#s3",
+     "POL-EXCHANGE#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s2",
+     "POL-COMPLAINT#s1",
+     "POL-COMPLAINT#s3",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s4"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s1",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s2",
+     "POL-QUALITY#s1",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ },
+ {
+  "config": "中文嵌入 + 中文重排（v2 配置）",
+  "mode": "混合+重排",
+  "n": 21,
+  "hit@1": 1.0,
+  "hit@3": 1.0,
+  "recall@3": 1.0,
+  "mrr@5": 1.0,
+  "avg_ms": 575.2,
+  "misses@3": [],
+  "rows": [
+   {
+    "id": "dp01",
+    "ranked": [
+     "PRD-DEMO-001#faq1",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-002#main",
+     "PRD-DEMO-008#main",
+     "PRD-DEMO-001#faq3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp02",
+    "ranked": [
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-001#main",
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-006#main",
+     "PRD-DEMO-003#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp03",
+    "ranked": [
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-107#faq1",
+     "PRD-DEMO-104#main",
+     "PRD-DEMO-102#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp04",
+    "ranked": [
+     "PRD-DEMO-201#faq1",
+     "PRD-DEMO-202#faq1",
+     "PRD-DEMO-202#main",
+     "PRD-DEMO-206#faq1",
+     "PRD-DEMO-306#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp05",
+    "ranked": [
+     "PRD-DEMO-204#faq1",
+     "PRD-DEMO-204#main",
+     "PRD-DEMO-205#main",
+     "PRD-DEMO-205#faq1",
+     "PRD-DEMO-108#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp06",
+    "ranked": [
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-003#faq1",
+     "PRD-DEMO-001#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp07",
+    "ranked": [
+     "PRD-DEMO-101#faq2",
+     "PRD-DEMO-101#faq1",
+     "PRD-DEMO-101#main",
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-102#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp08",
+    "ranked": [
+     "PRD-DEMO-103#faq1",
+     "PRD-DEMO-107#faq1",
+     "PRD-DEMO-102#faq1",
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-101#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp09",
+    "ranked": [
+     "PRD-DEMO-006#faq1",
+     "PRD-DEMO-001#faq3",
+     "PRD-DEMO-104#faq1",
+     "PRD-DEMO-004#main",
+     "PRD-DEMO-006#main"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dp10",
+    "ranked": [
+     "PRD-DEMO-303#faq1",
+     "PRD-DEMO-107#faq1",
+     "PRD-DEMO-002#faq1",
+     "PRD-DEMO-203#faq1",
+     "PRD-DEMO-104#faq1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq01",
+    "ranked": [
+     "POL-RETURN-7D#s2",
+     "POL-REFUND-TIME#s1",
+     "POL-REFUND-TIME#s2",
+     "POL-EXCHANGE#s1",
+     "POL-RETURN-7D#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq02",
+    "ranked": [
+     "POL-RETURN-7D#s3",
+     "POL-NOT-RETURNABLE#s2",
+     "POL-RETURN-7D#s1",
+     "POL-EXCHANGE#s2",
+     "POL-NOT-RETURNABLE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq03",
+    "ranked": [
+     "POL-SHIPPING-FEE#s2",
+     "POL-RETURN-7D#s4",
+     "POL-EXCHANGE#s2",
+     "POL-SHIPPING-FEE#s3",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq04",
+    "ranked": [
+     "POL-REFUND-TIME#s2",
+     "POL-REFUND-TIME#s1",
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s2",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq05",
+    "ranked": [
+     "POL-PRICE-PROTECT#s1",
+     "POL-PRICE-PROTECT#s2",
+     "POL-NOT-RETURNABLE#s1",
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq06",
+    "ranked": [
+     "POL-LOGISTICS#s2",
+     "POL-LOGISTICS#s3",
+     "POL-LOGISTICS#s4",
+     "POL-COMPLAINT#s1",
+     "POL-LOGISTICS#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq07",
+    "ranked": [
+     "POL-EXCHANGE#s2",
+     "POL-EXCHANGE#s3",
+     "POL-QUALITY#s1",
+     "POL-EXCHANGE#s1",
+     "POL-NOT-RETURNABLE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq08",
+    "ranked": [
+     "POL-SHIPPING-FEE#s1",
+     "POL-SHIPPING-FEE#s2",
+     "POL-PRICE-PROTECT#s1",
+     "POL-SHIPPING-FEE#s3",
+     "POL-PRICE-PROTECT#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq09",
+    "ranked": [
+     "POL-COMPLAINT#s2",
+     "POL-COMPLAINT#s3",
+     "POL-REFUND-TIME#s1",
+     "POL-COMPLAINT#s1",
+     "POL-REFUND-TIME#s2"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq10",
+    "ranked": [
+     "POL-NOT-RETURNABLE#s3",
+     "POL-RETURN-7D#s1",
+     "POL-SHIPPING-FEE#s2",
+     "POL-EXCHANGE#s1",
+     "POL-SHIPPING-FEE#s3"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "dq11",
+    "ranked": [
+     "POL-QUALITY#s2",
+     "POL-RETURN-7D#s2",
+     "POL-EXCHANGE#s1",
+     "POL-REFUND-TIME#s2",
+     "POL-QUALITY#s1"
+    ],
+    "hit@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "mrr@5": 1.0
+   }
+  ]
+ }
+]

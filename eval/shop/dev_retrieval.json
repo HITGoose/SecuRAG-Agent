@@ -1,0 +1,26 @@
+{
+  "description": "阶段1 开发集：只用于比较检索配置，不是正式测试集；阶段6 的测试集不复用这些问题。gold 为人工标注的相关 chunk_id。",
+  "queries": [
+    {"id": "dp01", "kind": "product", "query": "Air3开降噪能用几个小时", "gold": ["PRD-DEMO-001#faq1"]},
+    {"id": "dp02", "kind": "product", "query": "有没有没电了插线也能听的耳机", "gold": ["PRD-DEMO-002#faq1"]},
+    {"id": "dp03", "kind": "product", "query": "充电宝坐飞机可以带吗", "gold": ["PRD-DEMO-104#faq1"]},
+    {"id": "dp04", "kind": "product", "query": "热水壶能不能一直保温", "gold": ["PRD-DEMO-201#faq1"]},
+    {"id": "dp05", "kind": "product", "query": "净化器的滤芯多久需要更换", "gold": ["PRD-DEMO-204#faq1"]},
+    {"id": "dp06", "kind": "product", "query": "哪款耳机可以直接用水冲洗", "gold": ["PRD-DEMO-004#main"]},
+    {"id": "dp07", "kind": "product", "query": "65瓦充电头三个口一起充功率怎么分", "gold": ["PRD-DEMO-101#faq2"]},
+    {"id": "dp08", "kind": "product", "query": "数据线能不能接显示器投屏", "gold": ["PRD-DEMO-103#faq1"]},
+    {"id": "dp09", "kind": "product", "query": "智能音箱可以带去露营吗", "gold": ["PRD-DEMO-006#faq1"]},
+    {"id": "dp10", "kind": "product", "query": "吹风机带到电压110伏的地方能用吗", "gold": ["PRD-DEMO-303#faq1"]},
+    {"id": "dq01", "kind": "policy", "query": "退货期限从哪天开始算", "gold": ["POL-RETURN-7D#s2"]},
+    {"id": "dq02", "kind": "policy", "query": "牙刷拆开用了还能无理由退吗", "gold": ["POL-RETURN-7D#s3", "POL-NOT-RETURNABLE#s2"]},
+    {"id": "dq03", "kind": "policy", "query": "不想要了退回去的快递费谁出", "gold": ["POL-SHIPPING-FEE#s2", "POL-RETURN-7D#s4"]},
+    {"id": "dq04", "kind": "policy", "query": "钱退回银行卡要几天", "gold": ["POL-REFUND-TIME#s2"]},
+    {"id": "dq05", "kind": "policy", "query": "刚买没几天就降价了能补差价吗", "gold": ["POL-PRICE-PROTECT#s1"]},
+    {"id": "dq06", "kind": "policy", "query": "快递好几天没动静了怎么办", "gold": ["POL-LOGISTICS#s2"]},
+    {"id": "dq07", "kind": "policy", "query": "买错颜色了可以换吗", "gold": ["POL-EXCHANGE#s2"]},
+    {"id": "dq08", "kind": "policy", "query": "买多少钱可以免运费", "gold": ["POL-SHIPPING-FEE#s1"]},
+    {"id": "dq09", "kind": "policy", "query": "投诉以后多久有人回复", "gold": ["POL-COMPLAINT#s2"]},
+    {"id": "dq10", "kind": "policy", "query": "送的赠品退货时要不要一起寄回", "gold": ["POL-NOT-RETURNABLE#s3"]},
+    {"id": "dq11", "kind": "policy", "query": "保修期从什么时候开始算", "gold": ["POL-QUALITY#s2"]}
+  ]
+}
