@@ -1,0 +1,245 @@
+{
+ "threshold": 0.3229,
+ "知识库内判为低相关(误拦)": "0/21",
+ "知识库外判为低相关(拦住)": "16/16",
+ "rows": [
+  {
+   "query": "Air3开降噪能用几个小时",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.9987
+  },
+  {
+   "query": "有没有没电了插线也能听的耳机",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.97
+  },
+  {
+   "query": "充电宝坐飞机可以带吗",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.9965
+  },
+  {
+   "query": "热水壶能不能一直保温",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.9756
+  },
+  {
+   "query": "净化器的滤芯多久需要更换",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.9937
+  },
+  {
+   "query": "哪款耳机可以直接用水冲洗",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.9786
+  },
+  {
+   "query": "65瓦充电头三个口一起充功率怎么分",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.9942
+  },
+  {
+   "query": "数据线能不能接显示器投屏",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.3768
+  },
+  {
+   "query": "智能音箱可以带去露营吗",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.9956
+  },
+  {
+   "query": "吹风机带到电压110伏的地方能用吗",
+   "kind": "product",
+   "in_kb": true,
+   "top1": 0.993
+  },
+  {
+   "query": "退货期限从哪天开始算",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.9887
+  },
+  {
+   "query": "牙刷拆开用了还能无理由退吗",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.9677
+  },
+  {
+   "query": "不想要了退回去的快递费谁出",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.5834
+  },
+  {
+   "query": "钱退回银行卡要几天",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.9499
+  },
+  {
+   "query": "刚买没几天就降价了能补差价吗",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.9477
+  },
+  {
+   "query": "快递好几天没动静了怎么办",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.4555
+  },
+  {
+   "query": "买错颜色了可以换吗",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.9704
+  },
+  {
+   "query": "买多少钱可以免运费",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.6402
+  },
+  {
+   "query": "投诉以后多久有人回复",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.882
+  },
+  {
+   "query": "送的赠品退货时要不要一起寄回",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.9885
+  },
+  {
+   "query": "保修期从什么时候开始算",
+   "kind": "policy",
+   "in_kb": true,
+   "top1": 0.9382
+  },
+  {
+   "query": "有没有卖笔记本电脑",
+   "kind": "product",
+   "in_kb": false,
+   "top1": 0.0373,
+   "top1_chunk": "PRD-DEMO-101#faq1"
+  },
+  {
+   "query": "iPhone 16 Pro 多少钱",
+   "kind": "product",
+   "in_kb": false,
+   "top1": 0.0026,
+   "top1_chunk": "PRD-DEMO-105#faq1"
+  },
+  {
+   "query": "你们的扫地机器人吸力多大",
+   "kind": "product",
+   "in_kb": false,
+   "top1": 0.0542,
+   "top1_chunk": "PRD-DEMO-203#faq1"
+  },
+  {
+   "query": "有没有适合跑马拉松的运动手表",
+   "kind": "product",
+   "in_kb": false,
+   "top1": 0.045,
+   "top1_chunk": "PRD-DEMO-004#main"
+  },
+  {
+   "query": "电动自行车续航多少公里",
+   "kind": "product",
+   "in_kb": false,
+   "top1": 0.0197,
+   "top1_chunk": "PRD-DEMO-207#main"
+  },
+  {
+   "query": "有没有卖猫粮",
+   "kind": "product",
+   "in_kb": false,
+   "top1": 0.0154,
+   "top1_chunk": "PRD-DEMO-207#faq1"
+  },
+  {
+   "query": "游戏手柄支持哪些主机",
+   "kind": "product",
+   "in_kb": false,
+   "top1": 0.269,
+   "top1_chunk": "PRD-DEMO-303#faq1"
+  },
+  {
+   "query": "投影仪的亮度是多少流明",
+   "kind": "product",
+   "in_kb": false,
+   "top1": 0.1073,
+   "top1_chunk": "PRD-DEMO-203#faq1"
+  },
+  {
+   "query": "支持花呗分期付款吗",
+   "kind": "policy",
+   "in_kb": false,
+   "top1": 0.0049,
+   "top1_chunk": "POL-PRICE-PROTECT#s1"
+  },
+  {
+   "query": "能寄到海外吗",
+   "kind": "policy",
+   "in_kb": false,
+   "top1": 0.0186,
+   "top1_chunk": "POL-EXCHANGE#s2"
+  },
+  {
+   "query": "会员积分怎么兑换",
+   "kind": "policy",
+   "in_kb": false,
+   "top1": 0.0079,
+   "top1_chunk": "POL-INVOICE#s1"
+  },
+  {
+   "query": "可以货到付款吗",
+   "kind": "policy",
+   "in_kb": false,
+   "top1": 0.106,
+   "top1_chunk": "POL-EXCHANGE#s3"
+  },
+  {
+   "query": "生日有没有优惠券",
+   "kind": "policy",
+   "in_kb": false,
+   "top1": 0.0156,
+   "top1_chunk": "POL-PRICE-PROTECT#s2"
+  },
+  {
+   "query": "能不能用数字人民币支付",
+   "kind": "policy",
+   "in_kb": false,
+   "top1": 0.0015,
+   "top1_chunk": "POL-SHIPPING-FEE#s1"
+  },
+  {
+   "query": "门店自提怎么预约",
+   "kind": "policy",
+   "in_kb": false,
+   "top1": 0.253,
+   "top1_chunk": "POL-SHIPPING-FEE#s3"
+  },
+  {
+   "query": "以旧换新怎么折价",
+   "kind": "policy",
+   "in_kb": false,
+   "top1": 0.04,
+   "top1_chunk": "POL-PRICE-PROTECT#s1"
+  }
+ ]
+}

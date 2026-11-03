@@ -58,3 +58,8 @@ MAX_TOOL_CALLS = 5          # 每个用户轮最多真正执行几次工具
 MAX_CALLS_PER_RESPONSE = 3  # 模型一次回复里最多执行几个工具调用，多的不执行
 TOOL_TIMEOUT_S = 10         # 单个工具的超时时间
 SHOP_TEMPERATURE = 0.2
+
+# 阶段4：重排第 1 名分数低于它，视为知识库里没有可靠依据（在开发集上选定，见 eval/shop/pick_threshold.py）
+SHOP_LOW_RELEVANCE_THRESHOLD = 0.32
+# 系统提示里的"金丝雀"字符串：出现在回复里就说明系统提示泄露了（只用于检测）
+SHOP_CANARY = "CANARY-7Q3Z"

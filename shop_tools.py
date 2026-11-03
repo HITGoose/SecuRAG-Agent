@@ -160,8 +160,23 @@ class ShopTools:
 
     # ---------- 知识检索 ----------
 
+    @staticmethod
+    def _low_relevance(hits):
+        """
+        重排第 1 名都低于阈值：知识库里没有可靠依据。这时不把不相关的片段交给模型，
+        免得它拿着沾边的内容硬答；只告诉它"没找到"，由它如实回复或建议转人工。
+        """
+        top = hits[0]["rerank_score"] if hits else 0.0
+        if top >= config.SHOP_LOW_RELEVANCE_THRESHOLD:
+            return None
+        return ok({"results": [], "low_relevance": True, "最高相关度": round(top, 3),
+                   "提示": "知识库中没有找到与问题相关的可靠资料。请如实告诉用户没有查到，不要猜测，可以建议转人工客服。"})
+
     def search_products(self, ctx, query):
         hits = self.knowledge.search("product", query, top_k=3)
+        low = self._low_relevance(hits)
+        if low:
+            return low
         results, seen = [], set()
         for h in hits:
             pid = h["metadata"]["source_id"]
@@ -177,6 +192,9 @@ class ShopTools:
 
     def search_policy(self, ctx, query):
         hits = self.knowledge.search("policy", query, top_k=3)
+        low = self._low_relevance(hits)
+        if low:
+            return low
         results = [{"chunk_id": h["id"], "政策": h["metadata"]["title"], "小节": h["metadata"]["section"],
                     "相关度": round(h["rerank_score"], 3), "内容": h["text"]} for h in hits]
         return ok({"results": results}, [h["id"] for h in hits])
