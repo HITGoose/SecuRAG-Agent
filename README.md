@@ -2,7 +2,9 @@
 
 > A production-style RAG Agent for academic literature research, featuring multi-stage retrieval, agentic routing, and automated evaluation.
 
-![System Architecture](./SecuRAG_Retrieval_Pipeline-2026-02-06-094332.png)
+[中文说明（含系统架构图）](./README_CN.md) | English
+
+![System Architecture](./SecuRAG%20Retrieval%20Pipeline-2026-02-06-094332.png)
 
 ## 📖 Introduction
 

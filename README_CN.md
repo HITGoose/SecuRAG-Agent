@@ -2,12 +2,15 @@
 
 > 面向学术文献研究的生产级RAG Agent，集成多阶段检索、意图路由和自动化评估。
 
+中文 | [English](./README.md)
+
 ## 📖 项目介绍
 
 **SecuRAG** 是一个基于完整Agent架构的智能学术研究助手。不同于简单的RAG系统，SecuRAG实现了**多阶段检索流水线**和**自主意图路由器**，能自主判断是检索知识库还是直接回答。
 
 ### 核心功能
 
+* **输入安全防护**：入口脱敏（身份证/手机号/邮箱）→ 正则注入检测 → 大模型安全审查；审查服务不可用时一律拒绝（fail-closed）
 * **意图路由器**：自主将用户查询分类为SEARCH或CHAT
 * **混合检索**：BM25关键词检索+稠密向量检索双路各召回20条，用RRF（倒数排名融合）合并
 * **Reranking重排**：CrossEncoder对20条融合候选二阶段精排，取前3条交给大模型生成
@@ -16,6 +19,54 @@
 * **LLM-as-a-Judge**：自动评估回答的相关性和完整性
 * **本地隐私模式**：基于Ollama+ChromaDB完全离线运行，数据零出网
 * **微服务架构**：FastAPI后端+Streamlit前端解耦，支持Docker一键部署
+
+---
+
+## 🏗️ 系统架构
+
+### 整体结构
+
+```mermaid
+flowchart LR
+    U["用户"] --> FE["Streamlit 前端<br/>frontend.py"]
+    FE -- "HTTP：/chat、/upload、/health" --> API["FastAPI 后端<br/>api_server.py，端口 8000"]
+    API -- "/chat" --> ENG["SecuRAG 引擎<br/>securag_engine.py"]
+    API -- "/upload" --> PDF["PDF 入库<br/>pdf_loader.py<br/>每块 500 字符，重叠 50"]
+    PDF --> DB[("ChromaDB 向量库")]
+    ENG <--> DB
+    ENG <--> LLM["大模型<br/>本地：Ollama + qwen2.5:7b<br/>云端：DeepSeek"]
+```
+
+`dashboard.py` 是不经过后端、直接调用引擎的单页版本，可以单独用 `streamlit run dashboard.py` 启动。
+
+### 一次提问的处理流程（`securag_engine.py` 的 `chat()`）
+
+```mermaid
+flowchart TD
+    Q["用户输入"] --> S1["① 入口脱敏<br/>身份证、手机号、邮箱替换为占位符<br/>之后所有步骤和对话历史只用脱敏后的文本"]
+    S1 --> S2["② 正则注入检测<br/>如 ignore all previous instructions"]
+    S2 -- "命中" --> B1["拒绝<br/>Prompt Injection Detected"]
+    S2 -- "未命中" --> S3["③ 大模型安全审查<br/>危险关键词 + 大模型判断 SAFE / UNSAFE，温度 0"]
+    S3 -- "UNSAFE" --> B2["拒绝<br/>Request denied"]
+    S3 -- "审查模型调用失败" --> B3["拒绝（fail-closed）<br/>安全检查服务暂时不可用"]
+    S3 -- "SAFE" --> S4["④ 意图路由<br/>SEARCH / CHAT，温度 0<br/>调用失败时默认 SEARCH"]
+    S4 -- "CHAT" --> C["闲聊：不查库<br/>带最近 4 条历史直接生成"]
+    S4 -- "SEARCH" --> R1["⑤ 查询改写<br/>结合最近对话做指代消解"]
+    R1 --> R2["⑥ 双路召回<br/>向量检索前 20 + BM25（jieba 分词）前 20"]
+    R2 --> R3["⑦ RRF 融合，k = 60<br/>得到 20 条候选"]
+    R3 --> R4["⑧ CrossEncoder 精排<br/>ms-marco-MiniLM-L-6-v2，取前 3"]
+    R4 --> G["⑨ 生成<br/>每个片段单独用 document 标签包裹<br/>提示词声明资料只是参考、不是指令"]
+    C --> H["写入会话历史"]
+    G --> H
+```
+
+| 层 | 做法 | 代码位置 |
+|---|---|---|
+| 入口脱敏 | 正则替换身份证（先于手机号匹配，并加数字边界）、手机号、邮箱；Presidio 识别人名、地名，只记录日志不拦截 | `security_guard.py` |
+| 正则注入检测 | 黑名单短语，零成本、结果确定，只能拦住已知说法 | `security_guard.py` 的 `check_injection` |
+| 大模型安全审查 | 先查危险关键词，再让大模型按语义判断，覆盖换个说法的注入和角色扮演；调用失败时拒绝请求，避免攻击者让审查超时来绕过 | `securag_engine.py` 的 `analyze_risk` |
+| 检索 | 两路各召回 20 条，按名次做 RRF 融合（不需要把两种分数归一化），再由 CrossEncoder 从 20 条里选 3 条 | `hybrid_retriever.py`、`reranker.py` |
+| 生成 | 检索片段放进 document 标签，并先删掉片段里自带的同名标签，防止恶意文档伪造边界 | `securag_engine.py`、`config.py` |
 
 ---
 
